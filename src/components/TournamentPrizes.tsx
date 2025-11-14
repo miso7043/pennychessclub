@@ -53,7 +53,7 @@ export default function TournamentPrizes({
   return (
     <div className={`grid ${gridCols} gap-6`}>
       {sections.map((section, idx) => (
-        <div key={idx} className="rounded-xl border border-gray-200 p-6">
+        <div key={idx} className="rounded-xl border border-gray-400 p-6">
           <h3 className="font-bold text-xl text-gray-900 flex items-center gap-2">
             {section.icon === "trophy" ? (
               <Trophy className={`size-5 ${section.iconColor || "text-yellow-600"}`} />
