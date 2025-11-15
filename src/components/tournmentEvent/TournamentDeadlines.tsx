@@ -1,6 +1,6 @@
 import React from "react";
 import DeadlineItem from "./DeadlineItem";
-import { getGridCols } from "../utils/gridUtils";
+import { getGridCols } from "../../utils/gridUtils";
 
 export interface DeadlineInfo {
   /** Tournament name or label */
@@ -9,7 +9,7 @@ export interface DeadlineInfo {
   deadline: string;
 }
 
-interface TournamentDeadlinesProps {
+export interface TournamentDeadlinesProps {
   /** Array of deadline information */
   deadlines: DeadlineInfo[];
   /** Optional title override */
@@ -31,6 +31,8 @@ export default function TournamentDeadlines({
           {subtitle && <p className="text-gray-600 mt-2">{subtitle}</p>}
         </header>
       )}
+
+      {/* 배열 크기에 따라서 그리드의 칼럼 수가 정한다 */}
       <div className={`grid ${getGridCols(deadlines.length)} gap-6`}>
         {deadlines.map((item, idx) => (
           <DeadlineItem key={idx} label={item.label} deadline={item.deadline} />

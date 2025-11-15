@@ -38,6 +38,8 @@ className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4"
 className="grid grid-cols-1 gap-6"
 ```
 
+
+
 #### 플렉스박스
 ```tsx
 className="flex"                          // 기본 플렉스
@@ -227,6 +229,8 @@ className="overflow-y-auto"
 ```tsx
 className="grid-cols-1 md:grid-cols-2 lg:grid-cols-3"
 ```
+- 요소가 배열일 경우는 배열 크기에 따라서 그리드의 칼럼 수 결정
+- { getGridCols } from "../utils/gridUtils" 사용
 
 #### 텍스트 크기 변경
 ```tsx
@@ -354,3 +358,45 @@ className="outline outline-2 outline-blue-500"
 ---
 
 **참고**: 더 많은 유틸리티는 [Tailwind CSS 공식 문서](https://tailwindcss.com/docs) 참조
+
+## 사용자 정의 Tailwind 클래스 및 CSS 변수 활용 지침
+
+### 1. 사용자 정의 유틸리티 클래스 정의
+
+```css
+@layer utilities {
+  .grid-responsive {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(min(var(--grid-item-width), 100%), 1fr));
+    justify-items: center;
+  }
+}
+```
+
+### 2. CSS 변수 선언 예시
+
+```css
+:root {
+  --grid-item-width: 300px;
+  --grid-item-width-offset: 50px;
+}
+```
+
+### 3. 카드 스타일 예시
+
+```css
+.card {
+  /* ...기타 카드 스타일... */
+  max-width: calc(var(--grid-item-width) + var(--grid-item-width-offset));
+}
+```
+
+### 4. 적용 방법
+- `.grid-responsive` 클래스를 grid 컨테이너에 적용
+- `.card` 클래스에 max-width 계산 적용
+- 변수는 :root 또는 상위 컨테이너에 선언
+
+### 5. 참고
+- grid-template-columns에서 minmax(min(var(--grid-item-width), 100%), 1fr) 구조를 사용하여 반응형 그리드 구현
+- 카드의 최대 너비는 grid-item-width와 grid-item-width-offset의 합으로 지정
+- 필요에 따라 변수 값을 조정하여 레이아웃을 유연하게 변경 가능

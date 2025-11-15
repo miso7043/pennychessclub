@@ -37,7 +37,7 @@ const defaultRules = [
       </div>
     ),
   },
-  { title: "II. Food", content: <p className="text-gray-700">You may bring snacks (e.g., fruit, chocolate, drinks).</p> },
+  { title: "II. Food", content: <p className="text-gray-700">You are allowed to bring snacks and non-alcoholic drinks to the playing venue, (e.g., fruits, chocolate, soft drinks, coffee, milk)</p> },
   {
     title: "III. CFC membership",
     content: (
@@ -60,16 +60,24 @@ const defaultRules = [
     title: "VI. Byes",
     content: (
       <ul className="list-disc list-inside space-y-1 text-gray-700">
-        <li>Request byes before the registration deadline.</li>
-        <li>Computer-allocated bye: 1 point.</li>
-        <li>Requested bye R1–R2: 0.5 point each.</li>
-        <li>Requested bye R3–R4: 0 point.</li>
-        <li>Max 2 requested byes.</li>
-        <li>TD may refuse bye requests.</li>
+        <li>If you request bye(s), please confirm with us prior to the deadline of registration.</li>
+        <li>Bye requests for the next round received during the tournament may only be accepted before the pairings of the next round are published, either on the internet or at the playing venue. We will not accept any bye requests received afterwards.</li>
+        <li>If your bye is allocated by the computer pairings (ie. not your request), you will have 1 point. </li>
+        <li>If your bye is requested by you for round 1, 2 or 3, you will have 0.5 points per game</li>
+        <li>If your bye is requested by you for round 4 or 5 you will have 0 point.</li>
+        <li>You cannot request byes for more than 2 rounds.</li>
+        <li>Tournament Director (TD) reserves the right to refuse your bye requests</li>
       </ul>
     ),
   },
-  { title: "VII. 10 minutes tolerance", content: <p className="text-gray-700">10 minutes after round start, absent players forfeit (0 point).</p> },
+  {
+    title: "VII. 10 minutes tolerance", content:
+      <ul className="list-disc list-inside space-y-1 text-gray-700">
+        <li>10 minutes after round start, absent players forfeit (0 point).</li>
+        <li>Players who cannot attend any round are encouraged to inform the TD or Arbiters before the start of the round.</li>
+        <li>Players who are absent for 2 games without any notice to the TD or Arbiters will be removed from the tournament.</li>
+      </ul>
+  },
   {
     title: "VIII. Tie-break rules",
     content: (
@@ -104,10 +112,10 @@ interface TournamentRulesProps {
   showFooter?: boolean;
 }
 
-export default function TournamentRules({ 
-  rules = defaultRules, 
+export default function TournamentRules({
+  rules = defaultRules,
   footerNote = "We follow FIDE rules of chess. In case of disputes, the TD will make the final decision.",
-  showFooter = true 
+  showFooter = true
 }: TournamentRulesProps) {
   return (
     <div>

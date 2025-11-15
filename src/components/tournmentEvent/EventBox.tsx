@@ -1,5 +1,35 @@
 import React from "react";
 import { Calendar, Clock as ClockIcon } from "lucide-react";
+import { renderNewlineText } from "../../utils/Util";
+
+export interface EventCTA {
+  label: string;
+  href: string;
+  tone: "blue" | "green" | "purple" | "amber";
+}
+
+export interface EventSchedule {
+  summary: string;
+  rounds: string[];
+}
+
+export interface EventBoxProps {
+  id: string;
+  /** Event ID for badge tone determination */
+  // badgeTone?: "blue" | "green" | "orange" | "slate";
+  /** Date label to display */
+  dateLabel: string;
+  /** Event title */
+  title: string;
+  /** Event rating info */
+  rated: string;
+  /** Array of CTA buttons */
+  ctas: EventCTA[];
+  /** Schedule information */
+  schedule: EventSchedule;
+  /** Badge tone (auto-determined by eventId if not provided) */
+  badgeTone?: "blue" | "green" | "orange" | "slate";
+}
 
 // Badge component
 const Badge: React.FC<React.PropsWithChildren<{ tone?: "blue" | "green" | "orange" | "slate" }>> = ({
@@ -20,7 +50,7 @@ const Badge: React.FC<React.PropsWithChildren<{ tone?: "blue" | "green" | "orang
 };
 
 // CTAButton component
-const CTAButton: React.FC<React.PropsWithChildren<{ href: string; tone?: "blue" | "green" | "purple" }>> = ({
+const CTAButton: React.FC<React.PropsWithChildren<{ href: string; tone?: "blue" | "green" | "purple" | "amber" }>> = ({
   href,
   tone = "blue",
   children,
@@ -44,6 +74,12 @@ const CTAButton: React.FC<React.PropsWithChildren<{ href: string; tone?: "blue" 
       text: "text-zinc-900",
       hover: "hover:from-purple-200 hover:to-purple-300 hover:shadow-lg hover:shadow-purple-500/30",
     },
+    amber: {
+      bg: "bg-gradient-to-br from-amber-500/30 to-amber-600/30",
+      border: "border-amber-400/30",
+      text: "text-zinc-900",
+      hover: "hover:from-amber-200 hover:to-amber-300 hover:shadow-lg hover:shadow-amber-500/30",
+    },
   };
 
   const currentTone = tones[tone];
@@ -53,7 +89,7 @@ const CTAButton: React.FC<React.PropsWithChildren<{ href: string; tone?: "blue" 
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group relative inline-flex flex-col items-center justify-center gap-2 rounded-xl px-6 py-3.5 font-semibold ${currentTone.text} ${currentTone.bg} ${currentTone.hover} border ${currentTone.border} shadow-md transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 focus-visible:ring-${tone}-300`}
+      className={`group relative inline-flex flex-col items-center justify-center gap-2 rounded-xl px-6 py-3.5 font-semibold min-w-[100px] ${currentTone.text} ${currentTone.bg} ${currentTone.hover} border ${currentTone.border} shadow-md transition-all duration-200 hover:scale-[1.02] active:scale-[0.98] focus:outline-none focus-visible:ring-4 focus-visible:ring-offset-2 focus-visible:ring-${tone}-300`}
     >
       <svg
         xmlns="http://www.w3.org/2000/svg"
@@ -76,46 +112,46 @@ const CTAButton: React.FC<React.PropsWithChildren<{ href: string; tone?: "blue" 
   );
 };
 
-export interface EventCTA {
-  label: string;
-  href: string;
-  tone: "blue" | "green" | "purple";
-}
+export default function EventBox({ id, dateLabel, title, rated, ctas, schedule, badgeTone }: EventBoxProps) {
+  const tone = badgeTone || (id === "nov" ? "blue" : "green");
 
-export interface EventSchedule {
-  summary: string;
-  rounds: string[];
-}
+  const containerRef = React.useRef<HTMLDivElement>(null);
+  const [containerWidth, setContainerWidth] = React.useState<number>(0);
 
-interface EventBoxProps {
-  /** Event ID for badge tone determination */
-  eventId: string;
-  /** Date label to display */
-  dateLabel: string;
-  /** Event title */
-  title: string;
-  /** Event rating info */
-  rated: string;
-  /** Array of CTA buttons */
-  ctas: EventCTA[];
-  /** Schedule information */
-  schedule: EventSchedule;
-  /** Badge tone (auto-determined by eventId if not provided) */
-  badgeTone?: "blue" | "green" | "orange" | "slate";
-}
+  React.useEffect(() => {
+    const updateWidth = () => {
+      if (containerRef.current) {
+        setContainerWidth(containerRef.current.offsetWidth);
+      }
+    };
+    updateWidth();
+    window.addEventListener("resize", updateWidth);
+    return () => window.removeEventListener("resize", updateWidth);
+  }, []);
 
-export default function EventBox({ eventId, dateLabel, title, rated, ctas, schedule, badgeTone }: EventBoxProps) {
-  const tone = badgeTone || (eventId === "nov" ? "blue" : "green");
+  let gridCols = "mt-5 grid grid-cols-1 gap-3";
+  if (containerWidth < 360) {
+    gridCols = "mt-5 grid grid-cols-1 gap-3";
+  } else if (containerWidth < 540) {
+    gridCols = `mt-5 grid grid-cols-${Math.min(ctas.length, 2)} gap-5`;
+  } else if (containerWidth < 720) {
+    gridCols = `mt-5 grid grid-cols-${Math.min(ctas.length, 3)} gap-7`;
+  } else if (containerWidth < 900) {
+    gridCols = `mt-5 grid grid-cols-${Math.min(ctas.length, 4)} gap-9`;
+  } else {
+    gridCols = `mt-5 grid grid-cols-${ctas.length} gap-11`;
+  }
 
   return (
-    <>
+  <div ref={containerRef}>
       <div className="flex flex-col items-center text-center">
         <Badge tone={tone}>
           <Calendar className="size-4 mr-1.5" /> {dateLabel}
         </Badge>
         <h2 className="mt-3 text-2xl font-bold text-gray-900">{title}</h2>
-        <p className="text-gray-600 mt-1 font-medium">{rated}</p>
-        <div className={`mt-5 grid grid-cols-1 sm:grid-cols-${ctas.length} gap-3 w-full`}>
+        <p className="text-gray-600 mt-1 font-medium">{renderNewlineText(rated)}</p>
+        {/* 배열 크기에 따라서 그리드의 칼럼 수가 정한다 */}
+        <div className={gridCols}>
           {ctas.map((c) => (
             <CTAButton key={c.label} href={c.href} tone={c.tone}>
               {c.label}
@@ -130,11 +166,11 @@ export default function EventBox({ eventId, dateLabel, title, rated, ctas, sched
         <div className="mt-2 grid grid-cols-2 sm:grid-cols-5 gap-2">
           {schedule.rounds.map((t, idx) => (
             <div key={idx} className="rounded-lg bg-white/70 backdrop-blur-sm border border-gray-200/60 px-3 py-2 text-center text-sm font-medium text-gray-700">
-              R{idx + 1}: {t}
+              {t}
             </div>
           ))}
         </div>
       </div>
-    </>
+    </div>
   );
 }
