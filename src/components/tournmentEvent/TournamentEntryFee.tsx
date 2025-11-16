@@ -1,4 +1,3 @@
-import React from "react";
 
 export interface EntryFeeItem {
   /** Dot color (Tailwind color class) */

@@ -1,4 +1,3 @@
-import React from 'react';
 import TournamentEvent from "../../components/TournamentEvent";
 import type { TournamentEventDataType } from "../../components/TournamentEvent";
 

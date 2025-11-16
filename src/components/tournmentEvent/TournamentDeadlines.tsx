@@ -1,4 +1,3 @@
-import React from "react";
 import DeadlineItem from "./DeadlineItem";
 import { getGridCols } from "../../utils/gridUtils";
 

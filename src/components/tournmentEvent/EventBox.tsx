@@ -72,7 +72,7 @@ const CTAButton: React.FC<React.PropsWithChildren<{ href: string; tone?: "blue" 
       bg: "bg-gradient-to-br from-purple-500/30 to-purple-600/30",
       border: "border-purple-400/30",
       text: "text-zinc-900",
-      hover: "hover:from-purple-200 hover:to-purple-300 hover:shadow-lg hover:shadow-purple-500/30",
+      hover: "hover:from-purple-200 hovermin-w-[100px]:to-purple-300 hover:shadow-lg hover:shadow-purple-500/30",
     },
     amber: {
       bg: "bg-gradient-to-br from-amber-500/30 to-amber-600/30",
@@ -129,22 +129,33 @@ export default function EventBox({ id, dateLabel, title, rated, ctas, schedule, 
     return () => window.removeEventListener("resize", updateWidth);
   }, []);
 
-  let gridCols = "mt-5 grid grid-cols-1 gap-3";
+  // 이리 복잡하게 하는 이유가 tailwind css에서 동적으로 그리드 칼럼 수를 조절하는게 불가능해서임
+  let gridCols = "";
+  let columnCount = 1;
   if (containerWidth < 360) {
     gridCols = "mt-5 grid grid-cols-1 gap-3";
   } else if (containerWidth < 540) {
-    gridCols = `mt-5 grid grid-cols-${Math.min(ctas.length, 2)} gap-5`;
+    columnCount = 2;
+    gridCols = `mt-5 grid grid-cols-2 gap-5`;
   } else if (containerWidth < 720) {
-    gridCols = `mt-5 grid grid-cols-${Math.min(ctas.length, 3)} gap-7`;
+    columnCount = 3;
+    gridCols = `mt-5 grid grid-cols-3 gap-7`;
   } else if (containerWidth < 900) {
-    gridCols = `mt-5 grid grid-cols-${Math.min(ctas.length, 4)} gap-9`;
+    columnCount = 4;
+    gridCols = `mt-5 grid grid-cols-4 gap-9`;
   } else {
-    gridCols = `mt-5 grid grid-cols-${ctas.length} gap-11`;
+    columnCount = 5;
+    gridCols = `mt-5 grid grid-cols-5 gap-11`;
+  }
+
+  if(columnCount > ctas.length) {
+    // 배열 크기에 따라서 그리드의 칼럼 수가 정한다
+     gridCols = `mt-5 grid grid-cols-${ctas.length} gap-7`;
   }
 
   return (
   <div ref={containerRef}>
-      <div className="flex flex-col items-center text-center">
+      <div className="flex flex-col items-center text-center w-full max-w-4xl mx-auto">
         <Badge tone={tone}>
           <Calendar className="size-4 mr-1.5" /> {dateLabel}
         </Badge>

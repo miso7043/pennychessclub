@@ -1,4 +1,3 @@
-import React from "react";
 import { Clock as ClockIcon } from "lucide-react";
 
 interface DeadlineItemProps {

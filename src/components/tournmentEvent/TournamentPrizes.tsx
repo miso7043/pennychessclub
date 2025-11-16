@@ -1,4 +1,3 @@
-import React from "react";
 import { Trophy, Medal } from "lucide-react";
 
 // 1st 칸 트로피+금액 표시용 내부 컴포넌트
