@@ -1,4 +1,13 @@
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
+// 페이지 이동 시 상단으로 스크롤
+import React from 'react';
+function ScrollToTop() {
+  const { pathname } = useLocation();
+  React.useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+}
 import { useState } from 'react';
 import {mainStyle} from '../styles/mainStyle';
 
@@ -11,7 +20,9 @@ export default function Navigation() {
   };
 
   return (
-    <nav className={mainStyle.nav.main}>
+    <>
+      <ScrollToTop />
+      <nav className={mainStyle.nav.main}>
       <div className={mainStyle.nav.container}>
         <Link to="/" className="flex items-center no-underline">
           <img src="/imgs/pennyChessClub_logo.svg" alt="Penny Chess Club" className="h-22 w-auto my-2" />
@@ -203,5 +214,6 @@ export default function Navigation() {
         </div>
       )}
     </nav>
+    </>
   );
 }

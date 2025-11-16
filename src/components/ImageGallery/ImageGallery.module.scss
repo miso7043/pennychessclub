@@ -1,0 +1,126 @@
+.imageGallery {
+  width: 100%;
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.galleryContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: #f8f9fa;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.galleryImageContainer {
+  flex: 1;
+  position: relative;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.galleryImage {
+  max-width: 100%;
+  max-height: 400px;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  border-radius: 4px;
+}
+
+.imageTitle {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.7);
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  font-weight: 500;
+}
+
+.galleryBtn {
+  background: rgba(0, 0, 0, 0.5);
+  color: white;
+  border: none;
+  font-size: 1.5rem;
+  padding: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+  min-width: 50px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &:hover {
+    background: rgba(0, 0, 0, 0.7);
+  }
+
+  &:focus {
+    outline: 2px solid #007bff;
+    outline-offset: 2px;
+  }
+}
+
+.prevBtn {
+  border-radius: 0 4px 4px 0;
+}
+
+.nextBtn {
+  border-radius: 4px 0 0 4px;
+}
+
+.galleryDots {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  border: none;
+  background: #ccc;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+
+  &:hover {
+    background: #999;
+  }
+
+  &.active {
+    background: #007bff;
+  }
+}
+
+// 모바일 반응형
+@media (max-width: 768px) {
+  .galleryBtn {
+    font-size: 1.2rem;
+    padding: 0.5rem;
+    min-width: 40px;
+    height: 50px;
+  }
+
+  .galleryImageContainer {
+    min-height: 250px;
+  }
+
+  .galleryImage {
+    max-height: 300px;
+  }
+
+  .imageTitle {
+    padding: 0.5rem;
+    font-size: 0.9rem;
+  }
+}

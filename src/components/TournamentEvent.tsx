@@ -178,12 +178,21 @@ export default function TournamentEvent({ backImgPath = DEFAULT_BG_PATH, data }:
     };
   }, [isMobile, imgDims, scaledHeight, backImgPath]);
 
+  const [bgLoaded, setBgLoaded] = useState(false);
+
+  React.useEffect(() => {
+    setBgLoaded(false);
+    const img = new window.Image();
+    img.src = backImgPath;
+    img.onload = () => setBgLoaded(true);
+  }, [backImgPath]);
+
   return (
     <div ref={containerRef} className="relative min-h-screen text-gray-900">
       {/* PARALLAX BACKGROUND */}
       <div
         ref={imageRef}
-        className="parallax-bg fixed top-0 left-0 w-screen -z-10"
+        className="parallax-bg fixed top-0 left-0 w-screen -z-10 transition-opacity duration-500"
         style={{
           height: scaledHeight ? `${scaledHeight}px` : 'auto',
           minHeight: '100vh',
@@ -194,6 +203,7 @@ export default function TournamentEvent({ backImgPath = DEFAULT_BG_PATH, data }:
           backgroundRepeat: 'no-repeat',
           willChange: 'transform',
           transform: `translateY(${imageTranslate}px)`,
+          opacity: bgLoaded ? 1 : 0,
         }}
       />
 
