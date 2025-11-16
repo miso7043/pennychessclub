@@ -388,3 +388,5 @@ import { mainStyle } from '../styles/mainStyle';
 ---
 
 **사용 방법**: 새로운 컴포넌트를 만들 때 위의 템플릿을 참고하여 일관된 스타일을 유지하세요.
+
+

@@ -1,7 +1,7 @@
 import TournamentEvent from "../../components/TournamentEvent";
 import type { TournamentEventDataType } from "../../components/TournamentEvent";
 
-const bcJuniorChampionship2025Data: TournamentEventDataType = {
+const bcJuniorChampionshipData: TournamentEventDataType = {
   hero: {
     title: "BC Junior Chess Championship 2025",
     subtitle: "CFC Regular Rated | Provincial Junior Championship",
@@ -171,6 +171,6 @@ const bcJuniorChampionship2025Data: TournamentEventDataType = {
   ]
 };
 
-export default function BCJuniorChampionship2025() {
-  return <TournamentEvent data={bcJuniorChampionship2025Data} backImgPath="/imgs/bg/parallax-back-2.webp" />;
+export default function BCJuniorChampionship() {
+  return <TournamentEvent data={bcJuniorChampionshipData} backImgPath="/imgs/bg/parallax-back-2.webp" />;
 }

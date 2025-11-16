@@ -124,6 +124,6 @@ const bcChessCupData: TournamentEventDataType = {
   }
 };
 
-export default function BCChessCup2026() {
+export default function BCChessCup() {
   return <TournamentEvent data={bcChessCupData} backImgPath="/imgs/bg/parallax-back-1.webp" />;
 }

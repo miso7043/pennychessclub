@@ -1,7 +1,7 @@
 import TournamentEvent from "../../components/TournamentEvent";
 import type { TournamentEventDataType } from "../../components/TournamentEvent";
 
-const bcRapidChampionship2025Data: TournamentEventDataType = {
+const bcRapidChampionshipData: TournamentEventDataType = {
   hero: {
     title: "2025 BC Rapid Chess Championship",
     subtitle: "CFC Quick Rated",
@@ -139,6 +139,6 @@ const bcRapidChampionship2025Data: TournamentEventDataType = {
   ],
 };
 
-export default function BCRapidChampionship2025() {
-  return <TournamentEvent data={bcRapidChampionship2025Data} backImgPath="/imgs/bg/parallax-back-4.webp" />;
+export default function BCRapidChampionship() {
+  return <TournamentEvent data={bcRapidChampionshipData} backImgPath="/imgs/bg/parallax-back-4.webp" />;
 }
