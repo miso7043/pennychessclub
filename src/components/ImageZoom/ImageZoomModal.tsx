@@ -1,5 +1,6 @@
 import React from 'react';
 import { createPortal } from 'react-dom';
+
 /**
   * React Portal을 사용하여 모달을 document.body에 직접 렌더링
   * 
@@ -35,6 +36,12 @@ import { createPortal } from 'react-dom';
   *   4. 외부 라이브러리 인스턴스 → destroy 메서드 호출
   */
 
+// 애니메이션 시간 상수
+const FADE_OUT_DURATION = 350; // ms
+const FADE_OUT_BUFFER = 20; // ms (여유)
+const FADE_IN_BG_DURATION = 320; // ms
+const FADE_IN_IMG_DURATION = 350; // ms
+
 interface ImageZoomModalProps {
   src: string;
   alt?: string;
@@ -42,41 +49,67 @@ interface ImageZoomModalProps {
   onClose: () => void;
 }
 
+
+
 const ImageZoomModal: React.FC<ImageZoomModalProps> = ({ src, alt, open, onClose }) => {
+  // 애니메이션 단계 관리
+  const [backgroundVisible, setBackgroundVisible] = React.useState(false);
+  const [imageVisible, setImageVisible] = React.useState(false);
+  const [isFadingOut, setIsFadingOut] = React.useState(false);
+
+  // 빠른 fade out 애니메이션 후 onClose 실행
+  const onFadeOutAni = React.useCallback(() => {
+    setIsFadingOut(true);
+    setBackgroundVisible(false);
+    setImageVisible(false);
+    setTimeout(() => {
+      setIsFadingOut(false);
+      onClose();
+    }, FADE_OUT_DURATION + FADE_OUT_BUFFER);
+  }, [onClose]);
+
   // 스크롤 방지 및 메모리 정리
   React.useEffect(() => {
     if (open) {
-      // 현재 스타일 저장 (복원을 위해)
       const originalOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
-      
+
       // ESC 키로 모달 닫기
       const handleEscape = (event: KeyboardEvent) => {
         if (event.key === 'Escape') {
-          onClose();
+          onFadeOutAni();
         }
       };
-      
-      // 이벤트 리스너 등록
       document.addEventListener('keydown', handleEscape);
-      
-      // 정리 함수: 컴포넌트 언마운트나 open이 false가 될 때 실행
+
+      // 애니메이션 단계 초기화 및 순차적 실행
+      setBackgroundVisible(false);
+      setImageVisible(false);
+      setIsFadingOut(false);
+      const bgTimer = setTimeout(() => {
+        setBackgroundVisible(true);
+        setTimeout(() => setImageVisible(true), 200);
+      }, 10);
+
       return () => {
-        // 스크롤 원복 (originalOverflow가 빈 문자열이어도 정상 동작)
         document.body.style.overflow = originalOverflow;
-        // 이벤트 리스너 제거
         document.removeEventListener('keydown', handleEscape);
+        clearTimeout(bgTimer);
       };
+    } else {
+      setBackgroundVisible(false);
+      setImageVisible(false);
+      setIsFadingOut(false);
     }
-  }, [open, onClose]);
+  }, [open, onFadeOutAni]);
 
   if (!open) return null;
 
-  // 모달 내용을 정의
+  // 모달 내용 정의 (애니메이션 적용)
   const modalContent = (
     <div
-      className="fixed inset-0 bg-black bg-opacity-60"
-      onClick={onClose}
+      className="fixed inset-0"
+      onClick={onFadeOutAni}
       style={{
         zIndex: 1002,
         position: 'fixed',
@@ -88,7 +121,13 @@ const ImageZoomModal: React.FC<ImageZoomModalProps> = ({ src, alt, open, onClose
         alignItems: 'center',
         justifyContent: 'center',
         margin: 0,
-        padding: '0'
+        padding: '0',
+        background: 'rgba(0,0,0,.9)',
+        transition: isFadingOut
+          ? `opacity ${FADE_OUT_DURATION}ms cubic-bezier(.4,0,.2,1), transform ${FADE_OUT_DURATION}ms cubic-bezier(.4,0,.2,1)`
+          : `opacity ${FADE_IN_BG_DURATION}ms cubic-bezier(.4,0,.2,1), transform ${FADE_IN_IMG_DURATION}ms cubic-bezier(.4,0,.2,1)`,
+        opacity: backgroundVisible ? 1 : 0,
+        transform: backgroundVisible ? 'translateY(0)' : 'translateY(40px)'
       }}
     >
       <div
@@ -102,7 +141,7 @@ const ImageZoomModal: React.FC<ImageZoomModalProps> = ({ src, alt, open, onClose
       >
         <button
           className="absolute top-4 right-4 z-10 text-white text-3xl font-bold bg-black bg-opacity-80 rounded-full w-12 h-12 flex items-center justify-center hover:bg-opacity-100"
-          onClick={onClose}
+          onClick={onFadeOutAni}
           aria-label="Close"
           style={{
             zIndex: 1003
@@ -117,7 +156,11 @@ const ImageZoomModal: React.FC<ImageZoomModalProps> = ({ src, alt, open, onClose
           style={{
             maxHeight: '90vh',
             maxWidth: '90vw',
-            display: 'block'
+            display: 'block',
+            opacity: imageVisible ? 1 : 0,
+            transition: isFadingOut
+              ? `opacity ${FADE_OUT_DURATION}ms cubic-bezier(.4,0,.2,1)`
+              : `opacity ${FADE_IN_IMG_DURATION}ms cubic-bezier(.4,0,.2,1)`
           }}
         />
       </div>
