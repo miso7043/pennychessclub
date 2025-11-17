@@ -1,6 +1,7 @@
 import React from "react";
 import TournamentEvent from "../../components/TournamentEvent";
 import type { TournamentEventDataType } from "../../components/TournamentEvent";
+import { getRandomBgPath } from "../../utils/Util";
 
 const pccOpen5Data: TournamentEventDataType = {
   hero: {
@@ -101,7 +102,17 @@ const pccOpen5Data: TournamentEventDataType = {
 };
 
 export default function PCCOpen5() {
-  const [randomNum] = React.useState(() => Math.floor(Math.random() * 5) + 1);
-    const backImgPath = `/imgs/bg/hor/back-${randomNum}.webp`;
+  // 모바일 여부 감지
+  const [isMobile, setIsMobile] = React.useState(false);
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const [backImgPath] = React.useState(() => getRandomBgPath(isMobile));
   return <TournamentEvent data={pccOpen5Data} backImgPath={backImgPath} />;
 }

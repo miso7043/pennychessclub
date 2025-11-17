@@ -1,3 +1,11 @@
+// 모바일 여부에 따라 랜덤 배경 이미지 경로 반환
+export function getRandomBgPath(isMobile: boolean): string {
+  const randomNum = Math.floor(Math.random() * 5) + 1;
+  if (isMobile) {
+    return `/imgs/bg/ver-back-${randomNum}.webp`;
+  }
+  return `/imgs/bg/back-${randomNum}.webp`;
+}
 import React from "react";
 
 

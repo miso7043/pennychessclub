@@ -3,6 +3,7 @@ import React from 'react';
 import ImageGallery from '../../components/common/ImageGallery/ImageGallery';
 import type { GalleryImage } from '../../components/common/ImageGallery/ImageGallery';
 import ImageZoomModal from '../../components/common/ImageZoom/ImageZoomModal';
+import { getRandomBgPath } from '../../utils/Util';
 
 // 갤러리 폴더 정보
 const galleryFolders = [
@@ -66,8 +67,18 @@ export default function PhotoGalleries() {
   };
 
   // 배경 이미지 경로 (예시: PCCOpen5와 유사하게 지정)
-  const [randomNum] = React.useState(() => Math.floor(Math.random() * 5) + 1);
-  const backgroundImage = `/imgs/bg/hor/back-${randomNum}.webp`;
+  // 모바일 여부 감지
+  const [isMobile, setIsMobile] = React.useState(false);
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const [backgroundImage] = React.useState(() => getRandomBgPath(isMobile));
 
   return (
     <div className="relative min-h-screen text-gray-900">

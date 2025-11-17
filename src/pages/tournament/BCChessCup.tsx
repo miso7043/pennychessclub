@@ -1,6 +1,7 @@
 import React from "react";
 import TournamentEvent from "../../components/TournamentEvent";
 import type { TournamentEventDataType } from "../../components/TournamentEvent";
+import { getRandomBgPath } from "../../utils/Util";
 
 const bcChessCupData: TournamentEventDataType = {
   hero: {
@@ -124,8 +125,17 @@ const bcChessCupData: TournamentEventDataType = {
 };
 
 export default function BCChessCup() {
-  // 1~5 사이의 랜덤 숫자 생성 (최초 마운트 시)
-  const [randomNum] = React.useState(() => Math.floor(Math.random() * 5) + 1);
-  const backImgPath = `/imgs/bg/hor/back-${randomNum}.webp`;
+  // 모바일 여부 감지
+  const [isMobile, setIsMobile] = React.useState(false);
+  React.useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
+
+  const [backImgPath] = React.useState(() => getRandomBgPath(isMobile));
   return <TournamentEvent data={bcChessCupData} backImgPath={backImgPath} />;
 }
