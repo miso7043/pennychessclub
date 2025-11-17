@@ -14,7 +14,7 @@ const bcChessCupData: TournamentEventDataType = {
       dateLabel: "January 10-11, 2026",
       ctas: [
         { label: "REGISTER NOW!", href: "https://www.zeffy.com/en-CA/ticketing/2026-bc-chess-cup", tone: "blue" },
-        { label: "Pre-Reg List", href: "https://docs.google.com/spreadsheets/d/1FW7srJYwh5u6jQM_W_ZmQ2JPYtIoNwzWzQigzM6GTAo/edit?gid=0#gid=0", tone: "purple" },
+        { label: "Pre-Registered List", href: "https://docs.google.com/spreadsheets/d/1FW7srJYwh5u6jQM_W_ZmQ2JPYtIoNwzWzQigzM6GTAo/edit?gid=0#gid=0", tone: "purple" },
       ],
       schedule: {
         summary: "01/10-11/2026 (Sat-Sun) 5 Rounds",
@@ -28,6 +28,17 @@ const bcChessCupData: TournamentEventDataType = {
       },
     },
   ],
+  eventDetails: {
+    details: [
+      { label: "Time Control", value: "Round 1-3: G/50+10, Round 4-5: G/90+30" },
+      { label: "Pairings", value: "Swiss System" },
+    ],
+    address: {
+      venueName: "Bonsor Recreation Complex Banquet Hall",
+      address: "6550 Bonsor Avenue, Burnaby",
+      mapUrl: "https://maps.google.com/?q=6550%20Bonsor%20Avenue,%20Burnaby",
+    },
+  },
   banner: {
     title: "Payment: Online only",
     time: "",
@@ -46,18 +57,6 @@ const bcChessCupData: TournamentEventDataType = {
     "**Under 18 (Born on or after Jan 1st 2008)**",
     "And the **2026 BCCC Champion Section (For All Ages)**"
   ],
-  eventDetails: {
-    details: [
-      { label: "Time Control", value: "Round 1-3: G/50+10, Round 4-5: G/90+30" },
-      { label: "Pairings", value: "Swiss System" },
-      { label: "Address", value: "Bonsor Recreation Complex Banquet Hall, 6550 Bonsor Avenue, Burnaby" },
-    ],
-    address: {
-      venueName: "Bonsor Recreation Complex Banquet Hall",
-      address: "6550 Bonsor Avenue, Burnaby",
-      mapUrl: "https://maps.google.com/?q=6550%20Bonsor%20Avenue,%20Burnaby",
-    },
-  },
   entryFee: {
     fees: [
       { dotColor: "bg-green-500", text: "Regular $90, Early bird $80 before or on Dec 1, 2025" },
@@ -71,14 +70,13 @@ const bcChessCupData: TournamentEventDataType = {
     title: "Registration Deadline",
     subtitle: "Register by 1:00 PM January 9, 2026",
   },
-  playUp: { title: "Play Up & Unrated Players" },
   refundPolicy: [
     "Before December 9, 2025 (deduct $10)",
     "50% on or after Dec 9 until Jan 8, 2026.",
     "No refund on/after Jan 8, 2026."
   ],
   organizInfo: {
-    director: "Penny Pham",
+    // director: "Penny Pham",
     organizer: "Greater Vancouver Chess Society and Penny Chess Club",
     contact: "pennychessclub@gmail.com",
   },

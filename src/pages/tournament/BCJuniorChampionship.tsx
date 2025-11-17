@@ -30,6 +30,17 @@ const bcJuniorChampionshipData: TournamentEventDataType = {
       },
     },
   ],
+  eventDetails: {
+    details: [
+      { label: "Time Control", value: "Booster/Reserve: G/60+10, Champion: G/90+30" },
+      { label: "Pairings", value: "Swiss System" },
+    ],
+    address: {
+      venueName: "Vancouver Chess Centre",
+      address: "201-3979 Kingsway, Burnaby",
+      mapUrl: "https://maps.google.com/?q=201-3979%20Kingsway,%20Burnaby",
+    },
+  },
   banner: {
     title: "Payment: Online only",
     time: "",
@@ -42,18 +53,6 @@ const bcJuniorChampionshipData: TournamentEventDataType = {
     "**Champion Section** (Open to all, top BC junior title)",
     "Separate prizes and trophies for each section.",
   ],
-  eventDetails: {
-    details: [
-      { label: "Time Control", value: "Booster/Reserve: G/60+10, Champion: G/90+30" },
-      { label: "Pairings", value: "Swiss System" },
-      { label: "Address", value: "Vancouver Chess Centre, 201-3979 Kingsway, Burnaby" },
-    ],
-    address: {
-      venueName: "Vancouver Chess Centre",
-      address: "201-3979 Kingsway, Burnaby",
-      mapUrl: "https://maps.google.com/?q=201-3979%20Kingsway,%20Burnaby",
-    },
-  },
   entryFee: {
     fees: [
       { dotColor: "bg-green-500", text: "Regular $80, Early bird $70 before Nov 1, 2025" },
@@ -72,14 +71,13 @@ const bcJuniorChampionshipData: TournamentEventDataType = {
     title: "Registration Deadline",
     subtitle: "Register by 1:00 PM November 14, 2025",
   },
-  playUp: { title: "Play Up & Unrated Players" },
   refundPolicy: [
     "Before November 1, 2025 (deduct $10)",
     "50% on or after Nov 1 until Nov 13, 2025.",
     "No refund on/after Nov 13, 2025."
   ],
   organizInfo: {
-    director: "Penny Pham",
+    // director: "Penny Pham",
     organizer: "Greater Vancouver Chess Society and Penny Chess Club",
     contact: "pennychessclub@gmail.com",
   },
@@ -97,21 +95,21 @@ const bcJuniorChampionshipData: TournamentEventDataType = {
         icon: "trophy",
         iconColor: "text-yellow-600",
         prizeList: [
-          { place: "Prizes" , amount: "Computer tie-breaks apply. CJCC prizes require attending CJCC and follow CJCC rules." },
+          { place: "Prizes", amount: "Computer tie-breaks apply. CJCC prizes require attending CJCC and follow CJCC rules." },
           { place: "1st Place", amount: "Trophy \n CJCC Package $1500 - travel subsidy (including $1000 sponsored by BCCF only eligible to the Junior Champion) \n Qualification to play in the 2026 BC Closed" },
           { place: "2nd Place", amount: "Trophy \n CJCC Package $500 - travel subsidy" },
           { place: "3rd Place", amount: "Trophy" },
           { place: "Top Girl", amount: "Trophy \n CJCC Package $500 - travel subsidy" },
           { place: "", amount: "\n" },
 
-          { place: "​U1800" , amount: "Computer tie-breaks apply. CJCC prizes require attending CJCC and follow CJCC rules." },
+          { place: "​U1800", amount: "Computer tie-breaks apply. CJCC prizes require attending CJCC and follow CJCC rules." },
           { place: "1st Place", amount: "Trophy \n CJCC Package $500 - travel subsidy" },
           { place: "2nd Place", amount: "Trophy \n CJCC Package $400 - travel subsidy" },
           { place: "3rd Place", amount: "Trophy" },
           { place: "Top Girl", amount: "Trophy \n CJCC Package $500 - travel subsidy" },
           { place: "", amount: "\n" },
 
-          { place: "​U1500" , amount: "Computer tie-breaks apply. CJCC prizes require attending CJCC and follow CJCC rules." },
+          { place: "​U1500", amount: "Computer tie-breaks apply. CJCC prizes require attending CJCC and follow CJCC rules." },
           { place: "1st Place", amount: "Trophy \n CJCC Package $400 - travel subsidy" },
           { place: "2nd Place", amount: "Trophy \n CJCC Package $300 - travel subsidy" },
           { place: "3rd Place", amount: "Trophy" },
@@ -124,14 +122,14 @@ const bcJuniorChampionshipData: TournamentEventDataType = {
         icon: "trophy",
         iconColor: "text-purple-600",
         prizeList: [
-          { place: "Prizes" , amount: "Computer tie-breaks apply. CJCC prizes require attending CJCC and follow CJCC rules." },
+          { place: "Prizes", amount: "Computer tie-breaks apply. CJCC prizes require attending CJCC and follow CJCC rules." },
           { place: "1st Place", amount: "Trophy \n CJCC Package $400 - travel subsidy" },
           { place: "2nd Place", amount: "Trophy \n CJCC Package $300 - travel subsidy" },
           { place: "3rd Place", amount: "Trophy" },
           { place: "Top Girl", amount: "Trophy \n CJCC Package $400 - travel subsidy" },
           { place: "", amount: "\n" },
 
-          { place: "​U1000" , amount: "Computer tie-breaks apply. CJCC prizes require attending CJCC and follow CJCC rules." },
+          { place: "​U1000", amount: "Computer tie-breaks apply. CJCC prizes require attending CJCC and follow CJCC rules." },
           { place: "1st Place", amount: "Trophy \n CJCC Package $$350 - travel subsidy" },
           { place: "2nd Place", amount: "Trophy \n CJCC Package $$250 - travel subsidy" },
           { place: "3rd Place", amount: "Trophy" },
@@ -144,18 +142,18 @@ const bcJuniorChampionshipData: TournamentEventDataType = {
         icon: "trophy",
         iconColor: "text-blue-600",
         prizeList: [
-          { place: "Booster" , amount: "Computer tie-breaks apply. CJCC prizes require attending CJCC and follow CJCC rules." },
+          { place: "Booster", amount: "Computer tie-breaks apply. CJCC prizes require attending CJCC and follow CJCC rules." },
           { place: "1st Place", amount: "Trophy \n CJCC Package $350 - travel subsidy" },
           { place: "2nd Place", amount: "Trophy \n CJCC Package $250 - travel subsidy" },
           { place: "", amount: "\n" },
 
-          { place: "Prizes" , amount: "Computer tie-break on ties" },
+          { place: "Prizes", amount: "Computer tie-break on ties" },
           { place: "Top 3-5", amount: "Trophy" },
           { place: "Top 5 U500", amount: "Trophy" },
           { place: "Top 5 Unrated", amount: "Trophy" },
           { place: "", amount: "\n" },
 
-          { place: "Girls" , amount: "Computer tie-break on ties" },
+          { place: "Girls", amount: "Computer tie-break on ties" },
           { place: "1st Place", amount: "Trophy \n CJCC Package $350 - travel subsidy" },
           { place: "2nd Place", amount: "Trophy" },
           { place: "Top 2 U500", amount: "Trophy" },

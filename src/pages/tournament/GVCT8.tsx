@@ -9,7 +9,7 @@ const gvct8Data: TournamentEventDataType = {
   events: [
     {
       id: "gvct8",
-      title: "GVCT 8 (June 7th-8th, 2025)",
+      title: "",
       rated: "(CFC Regular Rated)",
       dateLabel: "June 7-8, 2025",
       ctas: [
@@ -30,6 +30,24 @@ const gvct8Data: TournamentEventDataType = {
       },
     },
   ],
+  eventDetails: {
+    details: [
+      { label: "Time Control", value: "Round 1-3: G/50+10, Round 4-5: G/90+30" },
+      { label: "Pairings", value: "Swiss System" },
+      { label: "Transportation", value: "Free parking, 3-min walk from Metrotown Skytrain" },
+    ],
+    address: {
+      venueName: "Bonsor Recreation Complex Banquet Hall",
+      address: "6550 Bonsor Avenue, Burnaby",
+      mapUrl: "https://maps.google.com/?q=6550%20Bonsor%20Avenue,%20Burnaby",
+    },
+    policy: [
+      "You may play up a section with a rating floor no more than 200 rating points above your rating.",
+      "In this case you need to add a play up fee of $30, in addition to the entry fee, at checkout.",
+      "Unrated players may play in either the U800, U1300 or U1800 without paying the play up fee.",
+      "However, unrated players are not recommended to play in the U1800 section, unless they have other significant chess experience, such as a rating of 1800 or more on chess.com or other equivalent chess websites.",
+    ],
+  },
   banner: {
     title: "Payment: Online only",
     time: "",
@@ -41,19 +59,6 @@ const gvct8Data: TournamentEventDataType = {
     "Play up: Allowed up to 200 points above your rating (add $30 play up fee)",
     "Unrated: May play in U800/U1300/U1800 (no play up fee)",
   ],
-  eventDetails: {
-    details: [
-      { label: "Time Control", value: "Round 1-3: G/50+10, Round 4-5: G/90+30" },
-      { label: "Pairings", value: "Swiss System" },
-      { label: "Address", value: "Bonsor Recreation Complex Banquet Hall, 6550 Bonsor Avenue, Burnaby" },
-      { label: "Transportation", value: "Free parking, 3-min walk from Metrotown Skytrain" },
-    ],
-    address: {
-      venueName: "Bonsor Recreation Complex Banquet Hall",
-      address: "6550 Bonsor Avenue, Burnaby",
-      mapUrl: "https://maps.google.com/?q=6550%20Bonsor%20Avenue,%20Burnaby",
-    },
-  },
   entryFee: {
     fees: [
       { dotColor: "bg-green-500", text: "Regular $100, Early bird $90 before or on May 1, 2025" },
@@ -68,22 +73,13 @@ const gvct8Data: TournamentEventDataType = {
     title: "Registration Deadline",
     subtitle: "Register by 1:00 PM June 6, 2025",
   },
-  playUp: { 
-    title: "Play Up & Unrated Players",
-    policy: [
-      "You may play up a section with a rating floor no more than 200 rating points above your rating.",
-      "In this case you need to add a play up fee of $30, in addition to the entry fee, at checkout.",
-      "Unrated players may play in either the U800, U1300 or U1800 without paying the play up fee.",
-      "However, unrated players are not recommended to play in the U1800 section, unless they have other significant chess experience, such as a rating of 1800 or more on chess.com or other equivalent chess websites.",
-    ],
-  },
   refundPolicy: [
     "Refund with $10 processing fee before May 6, 2025",
     "50% on or after May 6 until June 5, 2025",
     "No refund on/after June 5, 2025."
   ],
   organizInfo: {
-    director: "Penny Pham",
+    // director: "Penny Pham",
     organizer: "Greater Vancouver Chess Society and Penny Chess Club",
     contact: "pennychessclub@gmail.com",
   },

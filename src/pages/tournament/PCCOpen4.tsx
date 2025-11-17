@@ -9,7 +9,7 @@ const pccOpen4Data: TournamentEventDataType = {
   events: [
     {
       id: "pccopen4",
-      title: "PCC OPEN 4 (April 27th, 2025)",
+      title: "",
       rated: "(CFC Quick Rated)",
       dateLabel: "April 27, 2025",
       ctas: [
@@ -26,6 +26,18 @@ const pccOpen4Data: TournamentEventDataType = {
       },
     },
   ],
+  eventDetails: {
+    details: [
+      { label: "Time Control", value: "G/15 + 10" },
+      { label: "Pairings", value: "Swiss System" },
+      { label: "Max Capacity", value: "40 players" },
+    ],
+    address: {
+      venueName: "PCC Burnaby",
+      address: "200-4789 Kingsway, Burnaby, BC",
+      mapUrl: "https://maps.google.com/?q=200-4789%20Kingsway,%20Burnaby,%20BC",
+    },
+  },
   banner: {
     title: "Payment: Online only",
     time: "",
@@ -41,18 +53,6 @@ const pccOpen4Data: TournamentEventDataType = {
     "Under 16 (Born on or after Jan 1st 2009): Open, Girls",
     "Under 18 (Born on or after Jan 1st 2007): Open, Girls",
   ],
-  eventDetails: {
-    details: [
-      { label: "Time Control", value: "G/15 + 10" },
-      { label: "Pairings", value: "Swiss System" },
-      { label: "Max Capacity", value: "40 players" },
-    ],
-    address: {
-      venueName: "PCC Burnaby",
-      address: "200-4789 Kingsway, Burnaby, BC",
-      mapUrl: "https://maps.google.com/?q=200-4789%20Kingsway,%20Burnaby,%20BC",
-    },
-  },
   entryFee: {
     fees: [
       { dotColor: "bg-green-500", text: "$50" },
@@ -67,13 +67,12 @@ const pccOpen4Data: TournamentEventDataType = {
     title: "Registration Deadline",
     subtitle: "Register before 1:00 PM April 26, 2025 or max capacity",
   },
-  playUp: { title: "Play Up & Unrated Players" },
   refundPolicy: [
     "$10 processing fee applies to all refunds.",
     "No refund after 1:00 PM April 25, 2025."
   ],
   organizInfo: {
-    director: "Penny Pham",
+    // director: "Penny Pham",
     organizer: "Greater Vancouver Chess Society and Penny Chess Club",
     contact: "pennychessclub@gmail.com",
   },

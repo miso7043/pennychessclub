@@ -17,7 +17,7 @@ import BCOpen2025 from '../pages/tournament/BCOpen';
 import GVCT7 from '../pages/tournament/GVCT7';
 import PhotoGalleries from '../pages/tournament/PhotoGalleries';
 import ChessClass from '../pages/ChessClass';
-import RapidMeetup from '../pages/RapidMeetup';
+import RapidMeetup from '../pages/tournament/RapidMeetup';
 import Shop from '../pages/Shop';
 import Login from '../pages/Login';
 import Cart from '../pages/Cart';

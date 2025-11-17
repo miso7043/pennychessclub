@@ -1,8 +1,8 @@
 import { mainStyle } from '../../styles/mainStyle';
 import React from 'react';
-import ImageGallery from '../../components/ImageGallery/ImageGallery';
-import type { GalleryImage } from '../../components/ImageGallery/ImageGallery';
-import ImageZoomModal from '../../components/ImageZoom/ImageZoomModal';
+import ImageGallery from '../../components/common/ImageGallery/ImageGallery';
+import type { GalleryImage } from '../../components/common/ImageGallery/ImageGallery';
+import ImageZoomModal from '../../components/common/ImageZoom/ImageZoomModal';
 
 // 갤러리 폴더 정보
 const galleryFolders = [

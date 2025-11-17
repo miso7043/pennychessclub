@@ -1,0 +1,136 @@
+// Glass Box Component Styles
+// 글래스모피즘 효과를 위한 스타일
+
+:root {
+  --lg-bg-color: rgba(255, 255, 255, 0.25);
+  --lg-highlight: rgba(255, 255, 255, 0.75);
+  --lg-text: #ffffff;
+}
+
+.glass-container {
+  position: relative;
+  display: flex;
+  align-items: center;
+  background: transparent;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 
+    0 6px 6px rgba(0, 0, 0, 0.2), 
+    0 0 20px rgba(0, 0, 0, 0.1);
+  color: var(--lg-text);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+
+  // 크기 변형
+  &--small {
+    min-width: 8rem;
+    min-height: 4rem;
+  }
+
+  &--medium {
+    min-width: 12rem;
+    min-height: 6rem;
+  }
+
+  &--large {
+    min-width: 20rem;
+    min-height: 8rem;
+  }
+
+  // 둥근 모서리 변형
+  &--rounded {
+    border-radius: 2rem;
+  }
+
+  // 호버 효과
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: 
+      0 8px 12px rgba(0, 0, 0, 0.25), 
+      0 0 30px rgba(0, 0, 0, 0.15);
+  }
+}
+
+// 글래스 효과 레이어들
+.glass-filter,
+.glass-overlay,
+.glass-specular {
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+}
+
+.glass-filter {
+  z-index: 0;
+  backdrop-filter: blur(4px);
+  filter: saturate(120%) brightness(1.15);
+}
+
+.glass-overlay {
+  z-index: 1;
+  background: var(--lg-bg-color);
+}
+
+.glass-specular {
+  z-index: 2;
+  box-shadow: 
+    inset 1px 1px 0 var(--lg-highlight),
+    inset 0 0 5px var(--lg-highlight);
+}
+
+// 콘텐츠 영역
+.glass-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 1.5rem;
+  gap: 1rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+// 반응형 디자인
+@media (max-width: 768px) {
+  .glass-container {
+    &--large {
+      min-width: 16rem;
+      min-height: 6rem;
+    }
+
+    &--medium {
+      min-width: 10rem;
+      min-height: 5rem;
+    }
+
+    &--small {
+      min-width: 6rem;
+      min-height: 3rem;
+    }
+  }
+
+  .glass-content {
+    padding: 0.75rem 1rem;
+    gap: 0.5rem;
+  }
+}
+
+// 다크 테마 대응
+@media (prefers-color-scheme: dark) {
+  :root {
+    --lg-bg-color: rgba(0, 0, 0, 0.3);
+    --lg-highlight: rgba(255, 255, 255, 0.4);
+  }
+}
+
+// 모션 감소 설정
+@media (prefers-reduced-motion: reduce) {
+  .glass-container {
+    transition: none;
+
+    &:hover {
+      transform: none;
+    }
+  }
+}

@@ -1,4 +1,4 @@
-import { MapPin } from "lucide-react";
+
 
 export interface EventDetail {
   /** Detail label (e.g., "Sections", "Time Control") */
@@ -27,7 +27,7 @@ interface TournamentEventDetailsProps {
 
 export default function TournamentEventDetails({
   details,
-  address,
+  // address,
   gridCols = "grid-cols-1 sm:grid-cols-2",
 }: TournamentEventDetailsProps) {
   return (
@@ -40,7 +40,7 @@ export default function TournamentEventDetails({
           </div>
         ))}
       </div>
-      {address && (
+      {/* {address && (
         <div className="mt-6 rounded-xl bg-blue-50 p-4">
           <p className="font-semibold text-gray-900">Event Address</p>
           <div className="mt-1 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2">
@@ -58,7 +58,7 @@ export default function TournamentEventDetails({
             </a>
           </div>
         </div>
-      )}
+      )} */}
     </>
   );
 }

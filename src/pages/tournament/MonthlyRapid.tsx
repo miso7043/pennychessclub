@@ -55,18 +55,6 @@ const monthlyRapidData: TournamentEventDataType = {
       },
     },
   ],
-  organizInfo: {
-    director: "Mya Hoang",
-    organizer: "Greater Vancouver Chess Society and Penny Chess Club",
-    contact: "pennychessclub@gmail.com"
-  },
-  banner: {
-    title: "MEETUP (Free Entry · Drop-in)",
-    time: "5:30 PM – 7:00 PM",
-    note: "No registration required",
-    description:
-      "Play relaxed games, chat about positions, and share ideas with Penny Chess Club members, friends, and coaches.",
-  },
   eventDetails: {
     details: [
       { label: "Sections", value: "Premier & U1400 (All CFC Quick Rated)" },
@@ -79,6 +67,24 @@ const monthlyRapidData: TournamentEventDataType = {
       address: "5771 Marine Wy #600, Burnaby, BC V5J 0A6",
       mapUrl: "https://maps.google.com/?q=5771%20Marine%20Wy%20%23600,%20Burnaby,%20BC%20V5J%200A6",
     },
+    policy: [
+      "You may play up a section with a rating floor no more than 200 rating points above your rating.",
+      "In this case you need to add a play up fee of $10, in addition to the entry fee, at checkout.",
+      "Unrated players may play in either the Premier or U1400 Section without paying the play up fee.",
+      "However, unrated players are not recommended to play in the Premier Section, unless they have other significant chess experience, such as a rating of 1400 or more on chess.com or other equivalent chess websites.",
+    ],
+  },
+  organizInfo: {
+    // director: "Mya Hoang",
+    organizer: "Greater Vancouver Chess Society and Penny Chess Club",
+    contact: "pennychessclub@gmail.com"
+  },
+  banner: {
+    title: "MEETUP (Free Entry · Drop-in)",
+    time: "5:30 PM – 7:00 PM",
+    note: "No registration required",
+    description:
+      "Play relaxed games, chat about positions, and share ideas with Penny Chess Club members, friends, and coaches.",
   },
   entryFee: {
     fees: [
@@ -109,15 +115,6 @@ const monthlyRapidData: TournamentEventDataType = {
     ],
     title: "Deadlines",
     subtitle: "Submit registration before these times",
-  },
-  playUp: {
-    title: "Play Up & Unrated Players",
-    policy: [
-      "You may play up a section with a rating floor no more than 200 rating points above your rating.",
-      "In this case you need to add a play up fee of $10, in addition to the entry fee, at checkout.",
-      "Unrated players may play in either the Premier or U1400 Section without paying the play up fee.",
-      "However, unrated players are not recommended to play in the Premier Section, unless they have other significant chess experience, such as a rating of 1400 or more on chess.com or other equivalent chess websites.",
-    ],
   },
   refundPolicy: [
     "before Nov 1, 2025",

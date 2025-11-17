@@ -1,0 +1,208 @@
+:root {
+  --lg-bg-color: rgba(255, 255, 255, 0.08);
+  --lg-highlight: rgba(255, 255, 255, 0.3);
+  --lg-text: #ffffff;
+  --lg-hover-glow: rgba(255, 255, 255, 0.15);
+  --lg-red: #fb4268;
+  --lg-grey: #5b5b5b;
+}
+
+/* ========== CONTAINER ========== */
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.container--inline {
+  flex-direction: row;
+}
+
+/* ========== GLASS CONTAINER ========== */
+.glass-container {
+  position: relative;
+  display: flex;
+  font-weight: 600;
+  color: var(--lg-text);
+  cursor: pointer;
+  background: transparent;
+  border-radius: 2rem;
+  overflow: hidden;
+  box-shadow: 0 6px 6px rgba(0, 0, 0, 0.2), 0 0 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 2.2);
+  min-width: 200px;
+  min-height: 60px;
+}
+
+.glass-container--large {
+  min-width: 32rem;
+}
+
+.glass-container--rounded {
+  border-radius: 3rem;
+}
+
+.glass-container:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.3), 0 0 30px rgba(0, 0, 0, 0.15);
+}
+
+/* ========== GLASS LAYERS ========== */
+.glass-filter {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  backdrop-filter: blur(0px);
+  isolation: isolate;
+}
+
+.glass-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.1) 0%,
+    rgba(255, 255, 255, 0.05) 50%,
+    rgba(0, 0, 0, 0.05) 100%
+  );
+}
+
+.glass-specular {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  border-radius: inherit;
+  overflow: hidden;
+  box-shadow: inset 1px 1px 0 var(--lg-highlight),
+    inset 0 0 5px var(--lg-highlight);
+}
+
+.glass-content {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  padding: 1rem 1.5rem 0.9rem;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.glass-content--inline {
+  padding: 0.25rem 2rem 0.25rem 0.75rem;
+  flex: 1 1 auto;
+  justify-content: space-between;
+}
+
+/* ========== RESPONSIVE ========== */
+@media (max-width: 768px) {
+  .glass-container--large {
+    min-width: 20rem;
+  }
+  
+  .glass-content {
+    padding: 0.8rem 1rem;
+    gap: 15px;
+  }
+  
+  .glass-content--inline {
+    padding: 0.5rem 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .glass-container--large {
+    min-width: 16rem;
+  }
+  
+  .glass-content {
+    padding: 0.6rem 0.8rem;
+    gap: 10px;
+  }
+}
+
+/* ========== ANIMATION EFFECTS ========== */
+@keyframes glass-shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+.glass-container::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.05),
+    transparent
+  );
+  background-size: 200% 100%;
+  animation: glass-shimmer 4s infinite;
+  z-index: 4;
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* ========== CONTENT STYLING ========== */
+.glass-content {
+  h1, h2, h3, h4, h5, h6 {
+    color: var(--lg-text);
+    margin: 0 0 0.5rem 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8), 0 0 8px rgba(0, 0, 0, 0.3);
+    font-weight: 600;
+  }
+  
+  p {
+    color: rgba(255, 255, 255, 0.95);
+    margin: 0 0 1rem 0;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7), 0 0 4px rgba(0, 0, 0, 0.2);
+  }
+  
+  span {
+    color: rgba(255, 255, 255, 0.95);
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.7), 0 0 4px rgba(0, 0, 0, 0.2);
+    font-weight: 500;
+  }
+  
+  a {
+    color: var(--lg-text);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    
+    &:hover {
+      color: rgba(255, 255, 255, 0.8);
+      text-shadow: 0 0 8px rgba(255, 255, 255, 0.5);
+    }
+  }
+  
+  button {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    color: var(--lg-text);
+    padding: 0.5rem 1rem;
+    border-radius: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(10px);
+    
+    &:hover {
+      background: rgba(255, 255, 255, 0.3);
+      border-color: rgba(255, 255, 255, 0.5);
+      box-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+    }
+    
+    &:active {
+      transform: translateY(1px);
+    }
+  }
+}

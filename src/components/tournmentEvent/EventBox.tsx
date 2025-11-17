@@ -43,7 +43,7 @@ const Badge: React.FC<React.PropsWithChildren<{ tone?: "blue" | "green" | "orang
     slate: "bg-slate-50 text-slate-700 ring-slate-200",
   };
   return (
-    <span className={`inline-flex items-center rounded-full px-3 py-1 text-sm font-medium ring-1 ${tones[tone]}`}>
+    <span className={`inline-flex items-center rounded-full px-3 py-1 text-4xl font-medium ring-1 ${tones[tone]}`}>
       {children}
     </span>
   );
@@ -156,8 +156,8 @@ export default function EventBox({ id, dateLabel, title, rated, ctas, schedule, 
   return (
   <div ref={containerRef}>
       <div className="flex flex-col items-center text-center w-full max-w-4xl mx-auto">
-        <Badge tone={tone}>
-          <Calendar className="size-4 mr-1.5" /> {dateLabel}
+        <Badge tone={tone} >
+          <Calendar className="size-8" /> &nbsp; {dateLabel}
         </Badge>
         <h2 className="mt-3 text-2xl font-bold text-gray-900">{title}</h2>
         <p className="text-gray-600 mt-1 font-medium">{renderNewlineText(rated)}</p>

@@ -31,6 +31,24 @@ const bcRapidChampionshipData: TournamentEventDataType = {
       },
     },
   ],
+  eventDetails: {
+    details: [
+      { label: "Time Control", value: "G/15 + 10" },
+      { label: "Pairings", value: "Swiss System" },
+      { label: "Parking", value: "All-day free parking" },
+    ],
+    address: {
+      venueName: "Bonsor Recreation Complex Banquet Hall",
+      address: "6550 Bonsor Avenue, Burnaby",
+      mapUrl: "https://maps.google.com/?q=6550%20Bonsor%20Avenue,%20Burnaby",
+    },
+    policy: [
+      "You may play up a section with a rating floor no more than 200 rating points above your rating.",
+      "In this case you need to add a play up fee of $25, in addition to the entry fee, at checkout.",
+      "Unrated players may play in either the Premier or U1400 Section without paying the play up fee.",
+      "However, unrated players are not recommended to play in the Premier Section, unless they have other significant chess experience, such as a rating of 1400 or more on chess.com or other equivalent chess websites.",
+    ],
+  },
   banner: {
     title: "Payment: Online only",
     time: "",
@@ -42,19 +60,6 @@ const bcRapidChampionshipData: TournamentEventDataType = {
     "Play up: Allowed up to 200 points above your rating (add $25 play up fee)",
     "Unrated: May play in Premier or U1400 (no play up fee)",
   ],
-  eventDetails: {
-    details: [
-      { label: "Time Control", value: "G/15 + 10" },
-      { label: "Pairings", value: "Swiss System" },
-      { label: "Parking", value: "All-day free parking" },
-      { label: "Address", value: "Bonsor Recreation Complex Banquet Hall, 6550 Bonsor Avenue, Burnaby" },
-    ],
-    address: {
-      venueName: "Bonsor Recreation Complex Banquet Hall",
-      address: "6550 Bonsor Avenue, Burnaby",
-      mapUrl: "https://maps.google.com/?q=6550%20Bonsor%20Avenue,%20Burnaby",
-    },
-  },
   entryFee: {
     fees: [
       { dotColor: "bg-green-500", text: "$60 on or before Feb 18, 2025" },
@@ -72,22 +77,13 @@ const bcRapidChampionshipData: TournamentEventDataType = {
     title: "Registration Deadline",
     subtitle: "Register before noon April 5, 2025",
   },
-  playUp: { 
-    title: "Play Up & Unrated Players",
-    policy: [
-      "You may play up a section with a rating floor no more than 200 rating points above your rating.",
-      "In this case you need to add a play up fee of $25, in addition to the entry fee, at checkout.",
-      "Unrated players may play in either the Premier or U1400 Section without paying the play up fee.",
-      "However, unrated players are not recommended to play in the Premier Section, unless they have other significant chess experience, such as a rating of 1400 or more on chess.com or other equivalent chess websites.",
-    ],
-  },
   refundPolicy: [
     "100% refund before March 4, 2025",
     "50% on or after March 4 until April 4, 2025",
     "No refund on/after April 4, 2025."
   ],
   organizInfo: {
-    director: "Quang-Long Le",
+    // director: "Quang-Long Le",
     organizer: "Greater Vancouver Chess Society and Penny Chess Club",
     contact: "pennychessclub@gmail.com",
   },

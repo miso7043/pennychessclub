@@ -9,7 +9,7 @@ const bcOpen2025Data: TournamentEventDataType = {
   events: [
     {
       id: "bcopen2025",
-      title: "BC OPEN 2025 (Feb 15-17, 2025)",
+      title: "",
       rated: "(CFC or CFC/Fide rated) \n Blitz Tournament Timing: Sunday, February 16th at 7pm \n or as soon as Round 4 finishes G/3+2, 7 rounds. \n One Section Only.",
       dateLabel: "Feb 15-17, 2025",
       ctas: [
@@ -31,6 +31,19 @@ const bcOpen2025Data: TournamentEventDataType = {
       },
     },
   ],
+  eventDetails: {
+    details: [
+      { label: "Time Control", value: "G/90 + 30 (Classical), G/3 + 2 (Blitz)" },
+      { label: "Pairings", value: "Swiss System" },
+      { label: "Parking", value: "$9/day/event available" },
+      { label: "Address", value: "SFU Central Gym, 8888 University Dr W, Burnaby, BC V5A 1S6" },
+    ],
+    address: {
+      venueName: "SFU Central Gym",
+      address: "8888 University Dr W, Burnaby, BC V5A 1S6",
+      mapUrl: "https://maps.google.com/?q=8888%20University%20Dr%20W,%20Burnaby,%20BC%20V5A%201S6",
+    },
+  },
   banner: {
     title: "Payment: Online only",
     time: "",
@@ -45,19 +58,6 @@ const bcOpen2025Data: TournamentEventDataType = {
     "Unrated players are not recommended to play in the U1800 section unless they have significant chess experience",
     "(e.g. rating 1800+ on chess.com or similar).",
   ],
-  eventDetails: {
-    details: [
-      { label: "Time Control", value: "G/90 + 30 (Classical), G/3 + 2 (Blitz)" },
-      { label: "Pairings", value: "Swiss System" },
-      { label: "Parking", value: "$9/day/event available" },
-      { label: "Address", value: "SFU Central Gym, 8888 University Dr W, Burnaby, BC V5A 1S6" },
-    ],
-    address: {
-      venueName: "SFU Central Gym",
-      address: "8888 University Dr W, Burnaby, BC V5A 1S6",
-      mapUrl: "https://maps.google.com/?q=8888%20University%20Dr%20W,%20Burnaby,%20BC%20V5A%201S6",
-    },
-  },
   entryFee: {
     fees: [
       { dotColor: "bg-green-500", text: "Regular $120, Early bird $100 before or on Jan 1, 2025" },
@@ -74,14 +74,13 @@ const bcOpen2025Data: TournamentEventDataType = {
     title: "Registration Deadlines",
     subtitle: "Register before deadlines for classical and blitz",
   },
-  playUp: { title: "Play Up & Unrated Players" },
   refundPolicy: [
     "100% refund before Jan 14, 2025",
     "50% on or after Jan 14 until Feb 14, 2025",
     "No refund on/after Feb 14, 2025."
   ],
   organizInfo: {
-    director: "Quang-Long Le",
+    // director: "Quang-Long Le",
     organizer: "Greater Vancouver Chess Society and Penny Chess Club",
     contact: "pennychessclub@gmail.com",
   },
