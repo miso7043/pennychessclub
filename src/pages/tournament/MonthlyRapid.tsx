@@ -1,3 +1,4 @@
+import React from "react";
 import TournamentEvent from "../../components/TournamentEvent";
 import type { TournamentEventDataType } from "../../components/TournamentEvent";
 
@@ -125,7 +126,9 @@ const monthlyRapidData: TournamentEventDataType = {
 
 // ---------- PAGE ----------
 export default function MonthlyRapid() {
-  return <TournamentEvent data={monthlyRapidData} backImgPath="/imgs/bg/parallax-back-3.webp" />;
+  const [randomNum] = React.useState(() => Math.floor(Math.random() * 5) + 1);
+    const backImgPath = `/imgs/bg/hor/back-${randomNum}.webp`;
+  return <TournamentEvent data={monthlyRapidData} backImgPath={backImgPath} />;
 }
 
 

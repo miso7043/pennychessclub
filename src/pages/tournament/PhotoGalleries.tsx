@@ -27,7 +27,7 @@ const galleryFolders = [
 function getImageNames(folder: string): string[] {
   // PCC_Open_2_01.webp ~ PCC_Open_2_80.webp 등
   const count = folder === 'PCC_Open_2' ? 80 : folder === 'PCC_Open_3' ? 76 : folder === 'EMA_Classic_Open_1' ? 92 : 0;
-  return Array.from({ length: count }, (_, i) => `${folder}_${String(i+1).padStart(2, '0')}.webp`);
+  return Array.from({ length: count }, (_, i) => `${folder}_${String(i + 1).padStart(2, '0')}.webp`);
 }
 
 function getGalleryImages(folderInfo: { folder: string; title: string; base: string }): GalleryImage[] {
@@ -66,7 +66,8 @@ export default function PhotoGalleries() {
   };
 
   // 배경 이미지 경로 (예시: PCCOpen5와 유사하게 지정)
-  const backgroundImage = '/imgs/bg/parallax-back-5.webp';
+  const [randomNum] = React.useState(() => Math.floor(Math.random() * 5) + 1);
+  const backgroundImage = `/imgs/bg/hor/back-${randomNum}.webp`;
 
   return (
     <div className="relative min-h-screen text-gray-900">
@@ -87,7 +88,7 @@ export default function PhotoGalleries() {
         <div className={mainStyle.pageContainer}>
           <h1 className={`${mainStyle.h1.tournament} pt-8 text-center`}>Photo Galleries</h1>
           {galleryFolders.map((folder) => (
-            <section key={folder.folder} className={`${mainStyle.section} bg-white/20`}> 
+            <section key={folder.folder} className={`${mainStyle.section} bg-white/20`}>
               <h2 className={mainStyle.h2}>{folder.title}</h2>
               <ImageGallery
                 images={getGalleryImages(folder).map(img => ({ ...img, src: img.src, alt: img.alt, title: img.title }))}

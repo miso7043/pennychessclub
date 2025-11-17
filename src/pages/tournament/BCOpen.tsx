@@ -1,3 +1,4 @@
+import React from "react";
 import TournamentEvent from "../../components/TournamentEvent";
 import type { TournamentEventDataType } from "../../components/TournamentEvent";
 
@@ -129,5 +130,7 @@ const bcOpen2025Data: TournamentEventDataType = {
 };
 
 export default function BCOpen2025() {
-  return <TournamentEvent data={bcOpen2025Data} backImgPath="/imgs/bg/parallax-back-3.webp" />;
+  const [randomNum] = React.useState(() => Math.floor(Math.random() * 5) + 1);
+    const backImgPath = `/imgs/bg/hor/back-${randomNum}.webp`;
+  return <TournamentEvent data={bcOpen2025Data} backImgPath={backImgPath} />;
 }

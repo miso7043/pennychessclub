@@ -1,3 +1,4 @@
+import React from "react";
 import TournamentEvent from "../../components/TournamentEvent";
 import type { TournamentEventDataType } from "../../components/TournamentEvent";
 
@@ -123,5 +124,8 @@ const bcChessCupData: TournamentEventDataType = {
 };
 
 export default function BCChessCup() {
-  return <TournamentEvent data={bcChessCupData} backImgPath="/imgs/bg/parallax-back-1.webp" />;
+  // 1~5 사이의 랜덤 숫자 생성 (최초 마운트 시)
+  const [randomNum] = React.useState(() => Math.floor(Math.random() * 5) + 1);
+  const backImgPath = `/imgs/bg/hor/back-${randomNum}.webp`;
+  return <TournamentEvent data={bcChessCupData} backImgPath={backImgPath} />;
 }

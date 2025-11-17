@@ -1,3 +1,4 @@
+import React from "react";
 import TournamentEvent from "../../components/TournamentEvent";
 import type { TournamentEventDataType } from "../../components/TournamentEvent";
 
@@ -100,5 +101,7 @@ const pccOpen5Data: TournamentEventDataType = {
 };
 
 export default function PCCOpen5() {
-  return <TournamentEvent data={pccOpen5Data} backImgPath="/imgs/bg/parallax-back-5.webp" />;
+  const [randomNum] = React.useState(() => Math.floor(Math.random() * 5) + 1);
+    const backImgPath = `/imgs/bg/hor/back-${randomNum}.webp`;
+  return <TournamentEvent data={pccOpen5Data} backImgPath={backImgPath} />;
 }
