@@ -1,3 +1,17 @@
+// 모바일 환경 감지 커스텀 훅
+import { useState, useEffect } from "react";
+export function useMobile(breakpoint: number = 768): boolean {
+  const [isMobile, setIsMobile] = useState(false);
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= breakpoint);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, [breakpoint]);
+  return isMobile;
+}
 // 모바일 여부에 따라 랜덤 배경 이미지 경로 반환
 export function getRandomBgPath(isMobile: boolean): string {
   const randomNum = Math.floor(Math.random() * 5) + 1;

@@ -3,7 +3,7 @@ import React from 'react';
 import ImageGallery from '../../components/common/ImageGallery/ImageGallery';
 import type { GalleryImage } from '../../components/common/ImageGallery/ImageGallery';
 import ImageZoomModal from '../../components/common/ImageZoom/ImageZoomModal';
-import { getRandomBgPath } from '../../utils/Util';
+import { getRandomBgPath, useMobile } from '../../utils/Util';
 
 // 갤러리 폴더 정보
 const galleryFolders = [
@@ -68,15 +68,7 @@ export default function PhotoGalleries() {
 
   // 배경 이미지 경로 (예시: PCCOpen5와 유사하게 지정)
   // 모바일 여부 감지
-  const [isMobile, setIsMobile] = React.useState(false);
-  React.useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  const isMobile = useMobile();
 
   const [backgroundImage] = React.useState(() => getRandomBgPath(isMobile));
 

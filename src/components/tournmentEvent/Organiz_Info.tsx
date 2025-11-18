@@ -10,7 +10,7 @@ export interface OrganizInfoProps {
 
 const Organiz_Info: React.FC<OrganizInfoProps> = ({ organizer, contact, address }) => (
 
-  <div className="grid grid-cols-2 gap-4 mb-8 bg-amber-100/40 border border-zinc-500/40 rounded-xl p-3">
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-8 bg-amber-100/40 border border-zinc-500/40 rounded-xl p-3">
     <div className="border border-gray-300 px-4 py-3 rounded-lg  bg-white/30">
       <div className="grid grid-cols-[1fr_1.5fr] gap-x-6 text-sm md:text-lg font-bold text-gray-700">
         <div className="text-right">

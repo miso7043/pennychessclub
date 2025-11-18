@@ -1,7 +1,7 @@
 import React from "react";
 import TournamentEvent from "../../components/TournamentEvent";
 import type { TournamentEventDataType } from "../../components/TournamentEvent";
-import { getRandomBgPath } from "../../utils/Util";
+import { getRandomBgPath, useMobile } from "../../utils/Util";
 
 const bcChessCupData: TournamentEventDataType = {
   hero: {
@@ -126,15 +126,7 @@ const bcChessCupData: TournamentEventDataType = {
 
 export default function BCChessCup() {
   // 모바일 여부 감지
-  const [isMobile, setIsMobile] = React.useState(false);
-  React.useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    checkMobile();
-    window.addEventListener('resize', checkMobile);
-    return () => window.removeEventListener('resize', checkMobile);
-  }, []);
+  const isMobile = useMobile();
 
   const [backImgPath] = React.useState(() => getRandomBgPath(isMobile));
   return <TournamentEvent data={bcChessCupData} backImgPath={backImgPath} />;
