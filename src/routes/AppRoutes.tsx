@@ -1,9 +1,9 @@
 import { Routes, Route } from 'react-router-dom';
 import Home from '../pages/Home';
-import About from '../pages/About';
-import Founder from '../pages/Founder';
-import TeachingMethod from '../pages/TeachingMethod';
-import Coaches from '../pages/Coaches';
+import About from '../pages/about/About';
+import Founder from '../pages/about/Founder';
+import TeachingMethod from '../pages/about/TeachingMethod';
+import Coaches from '../pages/about/Coaches';
 import Tournament from '../pages/Tournament';
 import MonthlyRapid from '../pages/tournament/MonthlyRapid';
 import GVCT9 from '../pages/tournament/GVCT9';

@@ -8,13 +8,14 @@ interface HomeEventCardProps {
   titleSize?: string;
   textSize?: string;
   bgStyle?: React.CSSProperties;
-}export function HomeEventCard({ href, title, subtitle, date, titleSize = "text-xl", textSize = "text-base", bgStyle = { backgroundImage: 'radial-gradient(white 50%, ivory 40%)' } }: HomeEventCardProps) {
+}export function HomeEventCard({ href, title, subtitle, date, titleSize = "text-xl", textSize = "text-lg", bgStyle = { backgroundImage: 'radial-gradient(#142127, #243137)' } }: HomeEventCardProps) {
   return (
     <div
       className="border border-white/30 rounded-lg p-4 transition cursor-pointer 
-      relative text-center shadow-sm hover:shadow-2xl 
-      after:absolute after:inset-2 after:rounded-lg after:border-2 after:border-yellow-300 after:pointer-events-none after:content-[''] 
-      after:transition-colors hover:after:border-yellow-600"
+      relative text-center text-white
+      after:absolute after:inset-1 after:rounded-lg after:border-2 after:border-stone-600 after:pointer-events-none after:content-[''] 
+      after:transition-colors hover:after:border-emerald-600
+      after:shadow-xl hover:after:shadow-2xl"
       style={bgStyle}
     >
       <a href={href}>

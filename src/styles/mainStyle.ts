@@ -26,7 +26,7 @@ export const mainStyle = {
   h3: 'text-gray-700 text-xl font-medium mt-0 mb-2',
   
   // 섹션 스타일
-  section: 'mb-12 p-6 bg-white/0 rounded-lg',
+  section: 'mb-4 p-4 md:p-6 rounded-lg',
   
   // 텍스트 스타일
   text: {

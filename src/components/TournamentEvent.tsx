@@ -246,7 +246,7 @@ export default function TournamentEvent({ backImgPath = DEFAULT_BG_PATH, data }:
           </Section>
 
           {/* PRIZES */}
-          <Section title="Prizes / Medals" className="mt-12">
+          <Section title="Prizes / Medals" className="mt-12 mb-8">
             {data.prizesInfo ? (
               <TournamentPrizes
                 prizes={data.prizesInfo.prizes}
