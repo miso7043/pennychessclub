@@ -1,7 +1,7 @@
 import React, { useState } from "react";
+import FixedBackground from "./common/FixedBackground";
 import Banner from "./tournmentEvent/Banner";
 import type { BannerProps } from "./tournmentEvent/Banner";
-import TournamentRules from "./tournmentEvent/TournamentRules";
 import TournamentMiscellaneous from "./tournmentEvent/TournamentMiscellaneous";
 import TournamentPrizes from "./tournmentEvent/TournamentPrizes";
 import type { TournamentPrizesInterface } from "./tournmentEvent/TournamentPrizes";
@@ -16,6 +16,8 @@ import type { EventBoxProps } from "./tournmentEvent/EventBox";
 import { getGridCols } from "../utils/gridUtils";
 import { renderBoldText } from "../utils/Util";
 import Organiz_Info from "./tournmentEvent/Organiz_Info";
+import type { TournamentRuleProps } from "./tournmentEvent/TournamentRules";
+import TournamentRules from "./tournmentEvent/TournamentRules";
 
 
 // NOTE: Light mode only per request (no dark: classes)
@@ -23,7 +25,7 @@ import Organiz_Info from "./tournmentEvent/Organiz_Info";
 // Tech: React + TSX single-file component with small, reusable UI primitives
 
 // ---------- UI PRIMITIVES ----------
-const Section: React.FC<React.PropsWithChildren<{ title?: string; subtitle?: string; className?: string }>> = ({
+export const TournamentSection: React.FC<React.PropsWithChildren<{ title?: string; subtitle?: string; className?: string }>> = ({
   title,
   subtitle,
   className,
@@ -46,7 +48,7 @@ export type TournamentEventDataType = {
     title: string;
     subtitle: string;
   };
-  events: EventBoxProps[];
+  events?: EventBoxProps[];
   organizInfo?: {
     organizer: string;
     contact: string;
@@ -58,16 +60,17 @@ export type TournamentEventDataType = {
     address: EventAddress;
     policy?: Array<string>;
   };
-  entryFee: {
+  entryFee?: {
     fees: EntryFeeItem[];
   };
   residencePolicy?: Array<string>;
-  deadlines: TournamentDeadlinesProps;
-  refundPolicy: Array<string>;
+  deadlines?: TournamentDeadlinesProps;
+  refundPolicy?: Array<string>;
   prizesInfo?: TournamentPrizesInterface;
   // 새로운 형식의 데이터 구조 (기존 컴포넌트와 무관)
   miscInfo?: Array<string>;
   links?: Array<{ label: string; url: string }>;
+  rulesInfo?: TournamentRuleProps[];
 };
 
 export interface TournamentEventProps {
@@ -91,21 +94,10 @@ export default function TournamentEvent({ backImgPath = DEFAULT_BG_PATH, data }:
   return (
     <div className="relative min-h-screen text-gray-900">
       {/* FIXED BACKGROUND */}
-      <div
-        className="fixed top-0 left-0 w-screen h-screen -z-10 transition-opacity duration-500"
-        style={{
-          minHeight: '100vh',
-          width: '100vw',
-          backgroundImage: `url(${backImgPath})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center center',
-          backgroundRepeat: 'no-repeat',
-          opacity: bgLoaded ? 1 : 0,
-        }}
-      />
+      <FixedBackground backImgPath={backImgPath} bgLoaded={bgLoaded} />
 
       {/* CONTENT OVERLAY */}
-      <div className="relative bg-gradient-to-b from-white/70 via-gray-50/90 to-gray-50/50">
+      <div className="relative bg-gradient-to-b from-white/70 via-gray-100/90 to-gray-100/50">
         {/* HERO */}
         <main className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-12">
           <div className="mb-10 text-center">
@@ -126,8 +118,8 @@ export default function TournamentEvent({ backImgPath = DEFAULT_BG_PATH, data }:
           )}
 
           {/* FEATURED DATES */}
-          <div id="register" className={`grid ${getGridCols(data.events.length)} gap-6 mb-12`}>
-            {data.events.map((ev) => (
+          <div id="register" className={`grid ${getGridCols(data.events?.length || 0)} gap-6 mb-12`}>
+            {data.events?.map((ev) => (
               <div key={ev.id} className="rounded-2xl border border-gray-200/60 bg-white/60 backdrop-blur-sm p-6 shadow-sm">
                 <EventBox
                   id={ev.id}
@@ -149,104 +141,85 @@ export default function TournamentEvent({ backImgPath = DEFAULT_BG_PATH, data }:
           {/* ORGANIZER INFO */}
           {data.sectionInfo && (
             <div className=" mb-12">
-              <Section title="Section Information">
+              <TournamentSection title="Section Information">
                 <ul className="space-y-2 text-gray-700">
                   {data.sectionInfo.map((line: string, idx: number) => (
                     <li key={idx}>{renderBoldText(line)}</li>
                   ))}
                 </ul>
-              </Section>
+              </TournamentSection>
             </div>
           )}
 
           {/* DETAILS */}
           <div className={`grid ${getGridCols(2)} gap-8 mb-12`}>
             <div>
-              <Section title="Play Up & Unrated Players">
+              <TournamentSection title="Play Up & Unrated Players">
                 <TournamentEventDetails
                   details={data.eventDetails.details}
                 // address={data.eventDetails.address}
                 />
-              </Section>
+              </TournamentSection>
 
               {data.eventDetails.policy && (
-                <Section title="" className="mt-8">
+                <TournamentSection title="" className="mt-8">
                   <div className="space-y-2 text-gray-700">
                     {data.eventDetails.policy.map((line: string, idx: number) => (
                       <div key={idx}>{line}</div>
                     ))}
                   </div>
-                </Section>
+                </TournamentSection>
               )}
 
               {/* Residence Policy */}
               {data.residencePolicy && (
                 <div className="mt-8">
-                  <Section title="Residence Policy">
+                  <TournamentSection title="Residence Policy">
                     <ul className="space-y-2 text-gray-700">
                       {data.residencePolicy.map((line: string, idx: number) => (
                         <li key={idx}>{line}</li>
                       ))}
                     </ul>
-                  </Section>
+                  </TournamentSection>
                 </div>
               )}
             </div>
 
             {/* Entry Fee */}
             <div>
-              <Section title="Entry Fee">
+              {data.entryFee && (<TournamentSection title="Entry Fee">
                 <TournamentEntryFee
                   fees={data.entryFee.fees}
                 />
-              </Section>
-
-
-              {/* ORGANIZER INFO
-              {data.organizInfo && (
-                <Section title="" className="mt-8">
-                  <div className="grid grid-cols-[1fr_2.5fr] gap-x-6 text-sm md:text-lg font-bold text-gray-700">
-                    <div className="text-right">
-                      <span className="block">Organizer:</span>
-                    </div>
-                    <div className="text-left">
-                      <span className="block">{data.organizInfo.organizer}</span>
-                    </div>
-                  </div>
-                  <div className="grid grid-cols-[1fr_2.5fr] gap-x-6 text-sm md:text-lg font-bold text-gray-700">
-                    <div className="text-right">
-                      <span className="block">Contact us at</span>
-                    </div>
-                    <div className="text-left">
-                      <span className="block"><a href={`mailto:${data.organizInfo.contact}`} className="text-primary underline">{data.organizInfo.contact}</a></span>
-                    </div>
-                  </div>
-                </Section>
-              )} */}
+              </TournamentSection>)}
 
               {/* REFUND POLICY */}
               {/* 위 데이터가 있으면 Refund Policy를 오른쪽에 표시 */}
-              <Section title="Refund Policy" className="mt-8">
-                <ul className="space-y-2 text-gray-700">
-                  {data.refundPolicy.map((line: string, idx: number) => (
-                    <li key={idx}>{line}</li>
-                  ))}
-                </ul>
-              </Section>
+              {data.refundPolicy && (
+                <TournamentSection title="Refund Policy" className="mt-8">
+                  <ul className="space-y-2 text-gray-700">
+                    {data.refundPolicy.map((line: string, idx: number) => (
+                      <li key={idx}>{line}</li>
+                    ))}
+                  </ul>
+                </TournamentSection>
+              )}
             </div>
           </div>
 
           {/* DEADLINES */}
-          <Section title={data.deadlines.title} subtitle={data.deadlines.subtitle}>
-            <TournamentDeadlines
-              deadlines={data.deadlines.deadlines}
-              title=""
-              subtitle=""
-            />
-          </Section>
+          {data.deadlines && (
+            <TournamentSection title={data.deadlines.title} subtitle={data.deadlines.subtitle}>
+              <TournamentDeadlines
+                deadlines={data.deadlines.deadlines}
+                title=""
+                subtitle=""
+              />
+            </TournamentSection>
+          )}
 
           {/* PRIZES */}
-          <Section title="Prizes / Medals" className="mt-12 mb-8">
+          <TournamentSection title="Prizes / Medals" className="mt-12 mb-8">
             {data.prizesInfo ? (
               <TournamentPrizes
                 prizes={data.prizesInfo.prizes}
@@ -256,17 +229,17 @@ export default function TournamentEvent({ backImgPath = DEFAULT_BG_PATH, data }:
             ) : (
               <TournamentPrizes />
             )}
-          </Section>
+          </TournamentSection>
 
           {/* MISC */}
-          <Section title="Miscellaneous">
+          <TournamentSection title="Miscellaneous">
             <TournamentMiscellaneous />
-          </Section>
+          </TournamentSection>
 
           {/* RULES */}
-          <Section title="Tournament Rules & Policies" className="mt-12">
-            <TournamentRules showFooter={false} />
-          </Section>
+          <TournamentSection title="Tournament Rules & Policies" className="mt-12">
+            <TournamentRules showFooter={false} rules={data.rulesInfo} />
+          </TournamentSection>
         </main>
       </div>
     </div>

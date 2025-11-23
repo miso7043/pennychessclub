@@ -19,93 +19,47 @@ const AccordionItem: React.FC<{ title: string; children: React.ReactNode }> = ({
   );
 };
 
-// ---------- RULES DATA ----------
-const defaultRules = [
-  {
-    title: "I. Anti-cheating rules",
-    content: (
-      <div className="space-y-2 text-gray-700">
-        <p>We will follow anti-cheating rules guidelines by FIDE. See details below:</p>
-        <a
-          className="text-blue-600 hover:underline break-all"
-          href="https://www.fide.com/FIDE/handbook/Anti%20Cheating%20Guidelines.pdf"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          https://www.fide.com/FIDE/handbook/Anti%20Cheating%20Guidelines.pdf
-        </a>
-      </div>
-    ),
-  },
-  { title: "II. Food", content: <p className="text-gray-700">You are allowed to bring snacks and non-alcoholic drinks to the playing venue, (e.g., fruits, chocolate, soft drinks, coffee, milk)</p> },
-  {
-    title: "III. CFC membership",
-    content: (
-      <div className="space-y-2 text-gray-700">
-        <p>A valid CFC ID is required. If you need a new ID, register here:</p>
-        <a
-          className="text-blue-600 hover:underline"
-          href="https://www.chess.ca/en/players/membership-join/"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          https://www.chess.ca/en/players/membership-join/
-        </a>
-      </div>
-    ),
-  },
-  { title: "IV. Refusal Entry", content: <p className="text-gray-700">We reserve the right to refuse your entry.</p> },
-  { title: "V. Refund", content: <p className="text-gray-700">Generally, we do not offer refunds. Requests will be assessed case by case.</p> },
-  {
-    title: "VI. Byes",
-    content: (
-      <ul className="list-disc list-inside space-y-1 text-gray-700">
-        <li>If you request bye(s), please confirm with us prior to the deadline of registration.</li>
-        <li>Bye requests for the next round received during the tournament may only be accepted before the pairings of the next round are published, either on the internet or at the playing venue. We will not accept any bye requests received afterwards.</li>
-        <li>If your bye is allocated by the computer pairings (ie. not your request), you will have 1 point. </li>
-        <li>If your bye is requested by you for round 1, 2 or 3, you will have 0.5 points per game</li>
-        <li>If your bye is requested by you for round 4 or 5 you will have 0 point.</li>
-        <li>You cannot request byes for more than 2 rounds.</li>
-        <li>Tournament Director (TD) reserves the right to refuse your bye requests</li>
-      </ul>
-    ),
-  },
-  {
-    title: "VII. 10 minutes tolerance", content:
-      <ul className="list-disc list-inside space-y-1 text-gray-700">
-        <li>10 minutes after round start, absent players forfeit (0 point).</li>
-        <li>Players who cannot attend any round are encouraged to inform the TD or Arbiters before the start of the round.</li>
-        <li>Players who are absent for 2 games without any notice to the TD or Arbiters will be removed from the tournament.</li>
-      </ul>
-  },
-  {
-    title: "VIII. Tie-break rules",
-    content: (
-      <ul className="list-disc list-inside space-y-1 text-gray-700">
-        <li>1) Direct encounter</li>
-        <li>2) Greater number of victories</li>
-        <li>3) Buchholz</li>
-      </ul>
-    ),
-  },
-  {
-    title: "IX. Electric devices rules",
-    content: (
-      <ol className="list-decimal list-inside space-y-1 text-gray-700">
-        <li>No device use while playing unless approved by TD.</li>
-        <li>Devices must be off and stored; remain at table if game in progress.</li>
-        <li>Spectators: keep phones silent.</li>
-        <li>Violations may lead to removal or investigation.</li>
-      </ol>
-    ),
-  },
-  { title: "X. Others", content: <p className="text-gray-700">We follow FIDE rules; TD's decision is final.</p> },
-];
+// ---------- 내부 정보 컴포넌트 ----------
+interface TournamentRuleInfoProps {
+  description: string;
+  link?: string;
+  linkText?: string;
+}
+const TournamentRuleInfo: React.FC<TournamentRuleInfoProps> = ({ description, link, linkText }) => (
+  <div className="space-y-2 text-gray-700">
+    <p>{description}</p>
+    {link && (
+      <a
+        className="text-blue-600 hover:underline break-all"
+        href={link}
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        {linkText || link}
+      </a>
+    )}
+  </div>
+);
+
+// ---------- 내부 리스트 컴포넌트 ----------
+const TournamentRuleList: React.FC<{ items: string[] }> = ({ items }) => (
+  <ul className="list-disc list-inside space-y-1 text-gray-700">
+    {items.map((item, idx) => (
+      <li key={idx}>{item}</li>
+    ))}
+  </ul>
+);
 
 // ---------- COMPONENT ----------
-interface TournamentRulesProps {
+
+export interface TournamentRuleProps {
+  title: string;
+  content: TournamentRuleInfoProps | string[];
+}
+
+export interface TournamentRulesProps {
   /** Optional custom rules array. If not provided, default rules will be used. */
-  rules?: Array<{ title: string; content: React.ReactNode }>;
+  rules?: TournamentRuleProps[];
   /** Optional custom footer note */
   footerNote?: string;
   /** Show/hide the footer note completely */
@@ -113,18 +67,31 @@ interface TournamentRulesProps {
 }
 
 export default function TournamentRules({
-  rules = defaultRules,
+  rules = [],
   footerNote = "We follow FIDE rules of chess. In case of disputes, the TD will make the final decision.",
   showFooter = true
 }: TournamentRulesProps) {
   return (
     <div>
       <div className="space-y-3">
-        {rules.map((r) => (
-          <AccordionItem key={r.title} title={r.title}>
-            {r.content}
-          </AccordionItem>
-        ))}
+        {rules.map((r, idx) => {
+          // TournamentRuleListProps 타입일 경우 처리
+          if (Array.isArray(r?.content)) {
+            return (
+              <AccordionItem key={r.title + idx} title={r.title}>
+                <TournamentRuleList items={r.content} />
+              </AccordionItem>
+            );
+          }
+
+          // 타입은 TournamentRuleListProps아니면 그냥 문자열 배열
+          // TournamentRuleInfoProps 타입일 경우 처리
+          return (
+            <AccordionItem key={r.title + idx} title={r.title}>
+              <TournamentRuleInfo {...(r.content as TournamentRuleInfoProps)} />
+            </AccordionItem>
+          );
+        })}
       </div>
       {showFooter && (
         <p className="text-sm text-gray-500 mt-4 flex items-center gap-2">

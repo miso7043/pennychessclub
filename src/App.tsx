@@ -7,7 +7,8 @@ function App() {
   return (
     <>
       {/* pointer-events-none로 클릭 방지 */}
-      <div className="fixed inset-0 w-full h-full bg-slate-400 -z-50 pointer-events-none"></div>
+      {/* <div className="fixed inset-0 w-full h-full bg-slate-400 -z-50 pointer-events-none"></div> */}
+      <div className="fixed inset-0 w-full h-full bg-white -z-50 pointer-events-none"></div>
       <Router>
         <div className="min-h-screen flex flex-col">
           <Navigation />

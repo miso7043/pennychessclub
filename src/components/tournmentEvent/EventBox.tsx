@@ -170,7 +170,7 @@ export default function EventBox({ id, dateLabel, title, rated, ctas, schedule, 
           ))}
         </div>
       </div>
-      <div className="mt-6 rounded-xl bg-gray-50/70 backdrop-blur-sm p-4">
+      <div className="mt-6 rounded-xl bg-gray-100/70 backdrop-blur-sm p-4">
         <p className="font-semibold text-gray-800 flex items-center gap-2">
           <ClockIcon className="size-4" /> Tournament Schedule: {schedule.summary}
         </p>

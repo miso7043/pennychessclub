@@ -97,6 +97,67 @@ const pccOpen4Data: TournamentEventDataType = {
   links: [
     { label: "Pairings & Results", url: "https://chess-results.com/fed.aspx?lan=1&fed=CAN" },
   ],
+  rulesInfo: [
+    {
+      title: "I. Anti-cheating rules",
+      content: (
+        {
+          description: "We will follow anti-cheating rules guidelines by FIDE. See details below:",
+          link: "https://www.fide.com/FIDE/handbook/Anti%20Cheating%20Guidelines.pdf"
+        }
+      ),
+    },
+    { title: "II. Food", content: { description: "You are allowed to bring snacks and non-alcoholic drinks to the playing venue, (e.g., fruits, chocolate, soft drinks, coffee, milk)" } },
+    {
+      title: "III. CFC membership",
+      content: (
+        {
+          description: "A valid CFC ID is required. If you need a new ID, register here:",
+          link: "https://www.chess.ca/en/players/membership-join/"
+        }
+      ),
+    },
+    { title: "IV. Refusal Entry", content: { description: "We reserve the right to refuse your entry." } },
+    { title: "V. Refund", content: { description: "Generally, we do not offer refunds. Requests will be assessed case by case." } },
+    {
+      title: "VI. Byes",
+      content: [
+        "If you request bye(s), please confirm with us prior to the deadline of registration.",
+        "Bye requests for the next round received during the tournament may only be accepted before the pairings of the next round are published, either on the internet or at the playing venue. We will not accept any bye requests received afterwards.",
+        "If your bye is allocated by the computer pairings (ie. not your request), you will have 1 point.",
+        "If your bye is requested by you for round 1, 2 or 3, you will have 0.5 points per game",
+        "If your bye is requested by you for round 4 or 5 you will have 0 point.",
+        "You cannot request byes for more than 2 rounds.",
+        "Tournament Director (TD) reserves the right to refuse your bye requests"
+      ]
+    },
+    {
+      title: "VII. 10 minutes tolerance",
+      content: [
+        "10 minutes after round start, absent players forfeit (0 point).",
+        "Players who cannot attend any round are encouraged to inform the TD or Arbiters before the start of the round.",
+        "Players who are absent for 2 games without any notice to the TD or Arbiters will be removed from the tournament."
+      ]
+    },
+    {
+      title: "VIII. Tie-break rules",
+      content: [
+        "Direct encounter",
+        "Greater number of victories",
+        "Buchholz"
+      ]
+    },
+    {
+      title: "IX. Electric devices rules",
+      content: [
+        "No device use while playing unless approved by TD.",
+        "Devices must be off and stored; remain at table if game in progress.",
+        "Spectators: keep phones silent.",
+        "Violations may lead to removal or investigation."
+      ]
+    },
+    { title: "X. Others", content: { description: "We follow FIDE rules; TD's decision is final." } },
+  ]
 };
 
 export default function PCCOpen4() {

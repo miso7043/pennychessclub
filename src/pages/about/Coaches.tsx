@@ -1,5 +1,7 @@
+import React, { useState } from "react";
 import { mainStyle } from '../../styles/mainStyle';
 import { useMobile } from "../../utils/Util";
+import FixedBackground from '../../components/common/FixedBackground';
 
 const coaches = [
   {
@@ -147,8 +149,21 @@ export default function Coaches() {
 
   const sectionStyle = "shadow-2xl border border-emerald-300 rounded-4xl pt-12 mb-8 px-6";
   const bgColors = ["bg-amber-100/80", "bg-lime-100/80"];
+
+  const backImgPath = "/imgs/bg/back-3.webp";
+    // 배경 이미지 로딩 상태만 관리
+    const [bgLoaded, setBgLoaded] = useState(false);
+    React.useEffect(() => {
+      setBgLoaded(false);
+      const img = new window.Image();
+      img.src = backImgPath;
+      img.onload = () => setBgLoaded(true);
+    }, [backImgPath]);
+
   return (
     <div className="relative min-h-screen py-10 px-4">
+      <FixedBackground backImgPath={backImgPath} bgLoaded={bgLoaded} />
+
       <h2
         className={`${mainStyle.h2} text-center text-yellow-100 text-4xl md:text-6xl py-3 md:py-6`}
         style={{ WebkitTextStroke: isMobile ? '1px black' : '2px black' }}

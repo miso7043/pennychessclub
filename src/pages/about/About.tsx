@@ -13,7 +13,7 @@ export default function About() {
 
       {/* Parallax Our Goals Section */}
       <section className="relative overflow-hidden p-0 w-full my-12 md:my-20">
-        <div className="absolute inset-0 w-full h-full -z-10 bg-fixed bg-center bg-cover" style={{ backgroundImage: "url('/imgs/about/bg.webp')" }}></div>
+        <div className="absolute inset-0 w-full h-full -z-10 bg-fixed bg-center bg-cover" style={{ backgroundImage: "url('/imgs/bg/Max_Edric.avif')" }}></div>
         <div className="relative bg-black/70 rounded-4xl mx-auto py-12 my-12 md:my-20 px-4 md:px-16 mx-12 md:mx-20">
           <h2 className="text-4xl md:text-5xl font-bold text-yellow-100 text-center mb-8 drop-shadow" style={{ WebkitTextStroke: '2px black' }}>Our Goals</h2>
           <ul className="text-white text-lg md:text-2xl font-semibold leading-relaxed list-disc list-inside mb-6">

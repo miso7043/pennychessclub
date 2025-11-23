@@ -30,7 +30,7 @@ export const menuData = {
     },
     chessClass: { keyName: 'chessClass', name: 'Chess Class', to: '/chess-class' },
     rapidMeetup: { keyName: 'rapidMeetup', name: 'Rapid & Meetup', to: '/rapid-meetup' },
-    shop: { keyName: 'shop', name: 'Shop', to: '/shop' },
+    // shop: { keyName: 'shop', name: 'Shop', to: '/shop' },
   },
   action: {
     login: { keyName: 'login', name: 'Log In', to: '/login' },

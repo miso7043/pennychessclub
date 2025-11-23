@@ -4,7 +4,7 @@ import About from '../pages/about/About';
 import Founder from '../pages/about/Founder';
 import TeachingMethod from '../pages/about/TeachingMethod';
 import Coaches from '../pages/about/Coaches';
-import Tournament from '../pages/Tournament';
+import Tournament from '../pages/tournament/Tournament';
 import MonthlyRapid from '../pages/tournament/MonthlyRapid';
 import GVCT9 from '../pages/tournament/GVCT9';
 import BCChessCup from '../pages/tournament/BCChessCup';
@@ -18,9 +18,9 @@ import GVCT7 from '../pages/tournament/GVCT7';
 import PhotoGalleries from '../pages/tournament/PhotoGalleries';
 import ChessClass from '../pages/ChessClass';
 import RapidMeetup from '../pages/tournament/RapidMeetup';
-import Shop from '../pages/Shop';
-import Login from '../pages/Login';
-import Cart from '../pages/Cart';
+// import Shop from '../pages/Shop';
+// import Login from '../pages/Login';
+// import Cart from '../pages/Cart';
 
 import { menuData } from '../constance/menuInfo';
 
@@ -57,11 +57,11 @@ export default function AppRoutes() {
       <Route path={menuData.main.rapidMeetup.to} element={<RapidMeetup />} />
       
       {/* Shop */}
-      <Route path={menuData.main.shop.to} element={<Shop />} />
+      {/* <Route path={menuData.main.shop.to} element={<Shop />} /> */}
       
       {/* Login & Cart */}
-      <Route path={menuData.action.login.to} element={<Login />} />
-      <Route path={menuData.action.cart.to} element={<Cart />} />
+      {/* <Route path={menuData.action.login.to} element={<Login />} /> */}
+      {/* <Route path={menuData.action.cart.to} element={<Cart />} /> */}
     </Routes>
   );
 }

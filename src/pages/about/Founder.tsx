@@ -1,7 +1,24 @@
+import React, { useState } from "react";
+import FixedBackground from '../../components/common/FixedBackground';
+
 export default function Founder() {
   const sectionStyle = "shadow-2xl border border-emerald-300 rounded-4xl pt-12 mb-8 px-6";
+
+const backImgPath = "/imgs/bg/back-1.webp";
+  // 배경 이미지 로딩 상태만 관리
+  const [bgLoaded, setBgLoaded] = useState(false);
+  React.useEffect(() => {
+    setBgLoaded(false);
+    const img = new window.Image();
+    img.src = backImgPath;
+    img.onload = () => setBgLoaded(true);
+  }, [backImgPath]);
+
   return (
     <div className="relative min-h-screen py-10 px-4">
+      <FixedBackground backImgPath={backImgPath} bgLoaded={bgLoaded} />
+
+
       <section className={`${sectionStyle} bg-amber-100/80`}>
         <div className="flex flex-col items-center mb-8">
           <div className="relative w-60 h-60 mb-4">

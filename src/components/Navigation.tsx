@@ -63,7 +63,7 @@ export default function Navigation() {
         </ul>
 
         {/* Desktop Right side actions */}
-        <div className="hidden lg:flex items-center gap-4">
+        {/* <div className="hidden lg:flex items-center gap-4">
           {Object.values(menuData.action).map(action => (
             <Link key={action.keyName} to={action.to} className={mainStyle.nav.linkAction}>
               {action.name === 'Cart' ? (
@@ -74,7 +74,7 @@ export default function Navigation() {
               ) : action.name}
             </Link>
           ))}
-        </div>
+        </div> */}
       </div>
 
       {/* Mobile Menu */}
@@ -112,7 +112,7 @@ export default function Navigation() {
               </li>
             ))}
             {/* Mobile Login & Cart */}
-            {Object.values(menuData.action).map(action => (
+            {/* {Object.values(menuData.action).map(action => (
               <li key={action.keyName} className="border-b border-gray-300">
                 <Link to={action.to} className={`block py-3 px-4 text-black font-bold hover:bg-amber-100${action.name === 'Cart' ? ' flex items-center gap-2' : ''}`} onClick={() => setIsMenuOpen(false)}>
                   {action.name === 'Cart' ? (
@@ -123,7 +123,7 @@ export default function Navigation() {
                   ) : action.name}
                 </Link>
               </li>
-            ))}
+            ))} */}
           </ul>
         </div>
       )}
