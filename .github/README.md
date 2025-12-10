@@ -1,87 +1,102 @@
-# Penny Chess Club - 개발 가이드
+## Penny Chess Club - Development Guide
+## This project is the second volunteer project in Canada.
 
-## 📚 문서 목록
+## 📚 Document List
 
-이 프로젝트의 모든 개발 가이드라인과 참조 문서입니다.
+This is the comprehensive list of all development guidelines and reference documents for this project.
 
-### 1. [PROJECT_GUIDELINES.md](./PROJECT_GUIDELINES.md)
-**프로젝트 전체 지침서**
-- 프로젝트 개요 및 기술 스택
-- 사이트 구조 및 라우팅
-- 스타일링 가이드라인
-- 컴포넌트 작성 규칙
-- 코드 스타일 가이드
-- 성능 최적화 및 배포 체크리스트
+### 1\. [PROJECT\_GUIDELINES.md](https://www.google.com/search?q=./PROJECT_GUIDELINES.md)
 
-### 2. [COMPONENT_TEMPLATES.md](./COMPONENT_TEMPLATES.md)
-**재사용 가능한 컴포넌트 템플릿**
-- 페이지 컴포넌트 템플릿
-- 재사용 가능한 UI 컴포넌트
-- 네비게이션 메뉴 패턴
-- 폼 컴포넌트
-- 레이아웃 템플릿
-- 상태 표시 컴포넌트
+**Overall Project Handbook**
 
-### 3. [TAILWIND_REFERENCE.md](./TAILWIND_REFERENCE.md)
-**Tailwind CSS 빠른 참조**
-- 프로젝트 커스텀 색상
-- 자주 사용하는 패턴
-- 반응형 디자인 패턴
-- 그룹 호버 패턴
-- 유용한 유틸리티 조합
+  - Project Overview and Tech Stack
+  - Site Structure and Routing
+  - Styling Guidelines
+  - Component Creation Rules
+  - Code Style Guide
+  - Performance Optimization and Deployment Checklist
 
-## 🚀 빠른 시작
+### 2\. [COMPONENT\_TEMPLATES.md](https://www.google.com/search?q=./COMPONENT_TEMPLATES.md)
 
-### 새로운 페이지 만들기
-1. `src/pages/` 폴더에 새 파일 생성
-2. [COMPONENT_TEMPLATES.md](./COMPONENT_TEMPLATES.md)에서 적절한 템플릿 복사
-3. `src/App.tsx`에 라우트 추가
-4. 필요시 네비게이션 메뉴에 추가
+**Reusable Component Templates**
 
-### 새로운 컴포넌트 만들기
-1. `src/components/` 폴더에 새 파일 생성
-2. [COMPONENT_TEMPLATES.md](./COMPONENT_TEMPLATES.md)에서 적절한 템플릿 참조
-3. TypeScript 타입 정의
-4. Tailwind 클래스만 사용하여 스타일링
+  - Page Component Template
+  - Reusable UI Components
+  - Navigation Menu Patterns
+  - Form Components
+  - Layout Templates
+  - Status Indicator Components
 
-### 스타일 적용하기
-1. [TAILWIND_REFERENCE.md](./TAILWIND_REFERENCE.md)에서 필요한 클래스 찾기
-2. 반응형 디자인 패턴 적용
-3. 프로젝트 커스텀 색상 사용
+### 3\. [TAILWIND\_REFERENCE.md](https://www.google.com/search?q=./TAILWIND_REFERENCE.md)
 
-## 📝 개발 워크플로우
+**Tailwind CSS Quick Reference**
 
-### 1. 작업 전
-- [ ] 최신 코드 pull
-- [ ] 개발 서버 실행: `npm run dev`
-- [ ] 관련 문서 확인
+  - Project Custom Colors
+  - Frequently Used Patterns
+  - Responsive Design Patterns
+  - Group Hover Patterns
+  - Useful Utility Combinations
 
-### 2. 개발 중
-- [ ] [PROJECT_GUIDELINES.md](./PROJECT_GUIDELINES.md) 규칙 준수
-- [ ] Tailwind CSS만 사용 (별도 CSS 파일 ❌)
-- [ ] TypeScript 타입 정의
-- [ ] 반응형 디자인 적용
+## 🚀 Quick Start
 
-### 3. 작업 후
-- [ ] 린트 검사: `npm run lint`
-- [ ] 빌드 테스트: `npm run build`
-- [ ] 모든 브레이크포인트에서 테스트
-- [ ] 커밋 메시지 규칙 준수
+### Creating a New Page
 
-## 🎨 디자인 시스템
+1.  Create a new file in the `src/pages/` folder
+2.  Copy the appropriate template from [COMPONENT\_TEMPLATES.md](https://www.google.com/search?q=./COMPONENT_TEMPLATES.md)
+3.  Add the route to `src/App.tsx`
+4.  Add to the navigation menu, if necessary
 
-### 색상 팔레트
+### Creating a New Component
+
+1.  Create a new file in the `src/components/` folder
+2.  Refer to the appropriate template in [COMPONENT\_TEMPLATES.md](https://www.google.com/search?q=./COMPONENT_TEMPLATES.md)
+3.  Define TypeScript types
+4.  Style using Tailwind classes only
+
+### Applying Styles
+
+1.  Find the necessary classes in [TAILWIND\_REFERENCE.md](https://www.google.com/search?q=./TAILWIND_REFERENCE.md)
+2.  Apply responsive design patterns
+3.  Use project custom colors
+
+## 📝 Development Workflow
+
+### 1\. Before Work
+
+  - [ ] Pull the latest code
+  - [ ] Run the development server: `npm run dev`
+  - [ ] Review relevant documentation
+
+### 2\. During Development
+
+  - [ ] Adhere to the rules in [PROJECT\_GUIDELINES.md](https://www.google.com/search?q=./PROJECT_GUIDELINES.md)
+  - [ ] Use Tailwind CSS only (No separate CSS files ❌)
+  - [ ] Define TypeScript types
+  - [ ] Apply responsive design
+
+### 3\. After Work
+
+  - [ ] Run lint check: `npm run lint`
+  - [ ] Run build test: `npm run build`
+  - [ ] Test on all breakpoints
+  - [ ] Follow commit message rules
+
+## 🎨 Design System
+
+### Color Palette
+
 ```
-Primary (네비게이션):     #4a90e2 (파란색)
-Secondary (Home):         #7cb342 (녹색)
-Accent (Chess Class):     #ff9800 (주황색)
-Tournament:               #e91e63 (분홍색)
-Founder:                  #9c27b0 (보라색)
-Contact:                  #00bcd4 (청록색)
-Resources:                #607d8b (회색-파란색)
+Primary (Navigation): #4a90e2 (Blue)
+Secondary (Home): #7cb342 (Green)
+Accent (Chess Class): #ff9800 (Orange)
+Tournament: #e91e63 (Pink)
+Founder: #9c27b0 (Purple)
+Contact: #00bcd4 (Cyan)
+Resources: #607d8b (Blue-Gray)
 ```
 
-### 타이포그래피
+### Typography
+
 ```
 H1: text-4xl (2.25rem)
 H2: text-3xl (1.875rem)
@@ -89,41 +104,42 @@ H3: text-xl (1.25rem)
 Body: text-base (1rem)
 ```
 
-### 간격 시스템
+### Spacing System
+
 ```
-Section 간격: mb-12 (3rem)
-카드 간격: gap-4 (1rem)
-패딩: p-6 (1.5rem)
+Section Spacing: mb-12 (3rem)
+Card Spacing: gap-4 (1rem)
+Padding: p-6 (1.5rem)
 ```
 
-## 🔧 유용한 명령어
+## 🔧 Useful Commands
 
 ```bash
-# 개발 서버 실행
+# Run development server
 npm run dev
 
-# 프로덕션 빌드
+# Production build
 npm run build
 
-# 린트 검사
+# Run lint check
 npm run lint
 
-# 프리뷰 서버
+# Preview server
 npm run preview
 
-# TypeScript 타입 체크
+# TypeScript type checking
 npx tsc --noEmit
 ```
 
-## 📂 프로젝트 구조
+## 📂 Project Structure
 
 ```
 pennychessclub/
 ├── .github/
-│   ├── README.md                    # 이 파일
-│   ├── PROJECT_GUIDELINES.md        # 프로젝트 지침서
-│   ├── COMPONENT_TEMPLATES.md       # 컴포넌트 템플릿
-│   └── TAILWIND_REFERENCE.md        # Tailwind 참조
+│   ├── README.md                 # This file
+│   ├── PROJECT_GUIDELINES.md     # Project Guidelines
+│   ├── COMPONENT_TEMPLATES.md    # Component Templates
+│   └── TAILWIND_REFERENCE.md     # Tailwind Reference
 ├── src/
 │   ├── components/
 │   │   └── Navigation.tsx
@@ -150,44 +166,49 @@ pennychessclub/
 └── package.json
 ```
 
-## 🎯 핵심 원칙
+## 🎯 Core Principles
 
-### ✅ 해야 할 것
-- Tailwind CSS 유틸리티 클래스 사용
-- TypeScript 타입 정의
-- 반응형 디자인 적용
-- 컴포넌트 재사용
-- 시맨틱 HTML 사용
+### ✅ Do's
 
-### ❌ 하지 말아야 할 것
-- 인라인 스타일 작성
-- 별도 CSS 파일 생성
-- 클래스 컴포넌트 사용
-- 타입 정의 생략
-- 접근성 무시
+  - Use Tailwind CSS utility classes
+  - Define TypeScript types
+  - Apply responsive design
+  - Promote component reuse
+  - Use semantic HTML
 
-## 🆘 문제 해결
+### ❌ Don'ts
 
-### Tailwind 클래스가 작동하지 않을 때
-1. `tailwind.config.js`의 `content` 경로 확인
-2. 개발 서버 재시작
-3. 브라우저 캐시 삭제
+  - Write inline styles
+  - Create separate CSS files
+  - Use class components
+  - Omit type definitions
+  - Ignore accessibility
 
-### TypeScript 오류
-1. `npm install` 실행하여 의존성 확인
-2. `npx tsc --noEmit`로 타입 체크
-3. VSCode 재시작
+## 🆘 Troubleshooting
 
-### 빌드 오류
-1. `npm run lint`로 린트 오류 확인
-2. `node_modules` 삭제 후 재설치
-3. `.vite` 캐시 폴더 삭제
+### Tailwind Classes Not Working
 
-## 📞 문의
+1.  Check the `content` path in `tailwind.config.js`
+2.  Restart the development server
+3.  Clear browser cache
 
-프로젝트 관련 문의: pennychessclub@gmail.com
+### TypeScript Errors
 
----
+1.  Run `npm install` to confirm dependencies
+2.  Run `npx tsc --noEmit` for type checking
+3.  Restart VSCode
 
-**마지막 업데이트**: 2025년 11월 12일
-**버전**: 1.0.0
+### Build Errors
+
+1.  Run `npm run lint` to check for linting errors
+2.  Delete `node_modules` and reinstall
+3.  Delete the `.vite` cache folder
+
+## 📞 Contact
+
+Project related inquiries: thyoon7043@gmail.com
+
+-----
+
+**Last Updated**: November 12, 2025
+**Version**: 1.0.0
